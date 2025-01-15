@@ -1,0 +1,11 @@
+{
+    "git.path": "C:\\Program Files\\Git\\bin\\git.exe",
+    "json.schemas": [
+            // Your JSON schemas can go here if needed
+        ],
+        "github.gitAuthentication": false,
+        "remote.SSH.remotePlatform": {
+            "192.168.0.63": "linux"
+        }
+}
+    

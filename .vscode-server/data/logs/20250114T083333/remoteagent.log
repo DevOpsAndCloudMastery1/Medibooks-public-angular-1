@@ -1,0 +1,55 @@
+2025-01-14 08:33:33.768 [info] 
+
+
+
+
+2025-01-14 08:33:33.777 [info] Extension host agent started.
+2025-01-14 08:33:33.837 [info] [<unknown>][48ae5a7e][ExtensionHostConnection] New connection established.
+2025-01-14 08:33:33.842 [info] [<unknown>][ed08c86e][ManagementConnection] New connection established.
+2025-01-14 08:33:33.911 [info] [<unknown>][48ae5a7e][ExtensionHostConnection] <30222> Launched Extension Host Process.
+2025-01-14 08:38:44.409 [info] New EH opened, aborting shutdown
+2025-01-14 11:20:09.834 [info] [<unknown>][ed08c86e][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-01-14 11:20:11.416 [info] [<unknown>][48ae5a7e][ExtensionHostConnection] <30222> Extension Host Process exited with code: 0, signal: null.
+2025-01-14 11:20:11.438 [info] Last EH closed, waiting before shutting down
+2025-01-14 11:20:21.078 [info] [<unknown>][219ee54a][ManagementConnection] New connection established.
+2025-01-14 11:20:21.092 [info] [<unknown>][867d2bf4][ExtensionHostConnection] New connection established.
+2025-01-14 11:20:21.146 [info] [<unknown>][867d2bf4][ExtensionHostConnection] <92715> Launched Extension Host Process.
+2025-01-14 11:20:23.709 [error] CodeExpectedError: Could not find pty 5 on pty host
+    at I.W (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:48:12233)
+    at I.updateTitle (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:48:7722)
+    at N.s.<computed> (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:48:2962)
+    at Object.call (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:31:4203)
+    at Jc.s (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:29:78968)
+    at Jc.q (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:29:78491)
+    at us.value (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:29:77893)
+    at C.B (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:29:746)
+    at C.fire (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:29:964)
+    at process.w (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/vs/platform/terminal/node/ptyHostMain.js:24:29142)
+    at process.emit (node:events:518:28)
+    at emit (node:internal/child_process:950:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2025-01-14 11:25:11.449 [info] New EH opened, aborting shutdown
+2025-01-14 11:25:11.453 [error] Error: Unexpected SIGPIPE
+    at process.<anonymous> (file:///home/ubuntuuser/.vscode-server/cli/servers/Stable-91fbdddc47bc9c09064bf7acf133d22631cbf083/server/out/server-main.js:184:1060)
+    at process.emit (node:events:530:35)
+2025-01-14 11:43:09.346 [info] [<unknown>][219ee54a][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-01-14 11:43:09.448 [info] [<unknown>][867d2bf4][ExtensionHostConnection] <92715> Extension Host Process exited with code: 0, signal: null.
+2025-01-14 11:43:09.449 [info] Last EH closed, waiting before shutting down
+2025-01-14 11:43:16.879 [info] [<unknown>][ff468f57][ManagementConnection] New connection established.
+2025-01-14 11:43:16.883 [info] [<unknown>][978b6f7b][ExtensionHostConnection] New connection established.
+2025-01-14 11:43:16.891 [info] [<unknown>][978b6f7b][ExtensionHostConnection] <93765> Launched Extension Host Process.
+2025-01-14 11:45:39.157 [info] [<unknown>][978b6f7b][ExtensionHostConnection] <93765> Extension Host Process exited with code: 0, signal: null.
+2025-01-14 11:45:39.158 [info] Cancelling previous shutdown timeout
+2025-01-14 11:45:39.158 [info] Last EH closed, waiting before shutting down
+2025-01-14 11:46:09.144 [info] [<unknown>][ff468f57][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2025-01-14 11:46:09.336 [info] [<unknown>][ff468f57][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2025-01-14 11:46:09.338 [info] [<unknown>][c37cc8ab][ExtensionHostConnection] New connection established.
+2025-01-14 11:46:09.343 [info] [<unknown>][c37cc8ab][ExtensionHostConnection] <94010> Launched Extension Host Process.
+2025-01-14 11:46:09.345 [info] [<unknown>][711b8328][ManagementConnection] New connection established.
+2025-01-14 11:46:26.091 [warning] [File Watcher] Watcher shutdown because watched path got deleted (path: /home/ubuntuuser/myproject/images)
+2025-01-14 11:46:53.843 [warning] [File Watcher (node.js)] Watcher shutdown because watched path got deleted
+2025-01-14 11:49:22.436 [warning] [File Watcher (node.js)] Watcher shutdown because watched path got deleted
+2025-01-14 11:50:02.911 [info] [<unknown>][711b8328][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-01-14 11:50:02.988 [info] [<unknown>][c37cc8ab][ExtensionHostConnection] <94010> Extension Host Process exited with code: 0, signal: null.
+2025-01-14 11:50:02.988 [info] Cancelling previous shutdown timeout
+2025-01-14 11:50:02.989 [info] Last EH closed, waiting before shutting down

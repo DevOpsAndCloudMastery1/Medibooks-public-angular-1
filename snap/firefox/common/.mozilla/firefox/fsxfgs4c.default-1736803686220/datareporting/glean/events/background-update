@@ -1,0 +1,2 @@
+{"timestamp":9946750,"category":"nimbus_events","name":"validation_failed","extra":{"glean_timestamp":"1736847433957","feature":"addAnImageInPDF","experiment":"add-an-image-to-pdf-with-alt-text-rollout","reason":"invalid-feature"}}
+{"timestamp":10885843,"category":"nimbus_events","name":"exposure","extra":{"experiment":"fx-view-discoverability-2025-rollout","branch":"treatment-b","feature_id":"fxms-message-3","glean_timestamp":"1736848373050"}}

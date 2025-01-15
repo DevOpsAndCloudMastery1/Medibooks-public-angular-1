@@ -1,0 +1,16 @@
+2025-01-13 22:54:42.873 [info] 
+
+
+
+
+2025-01-13 22:54:42.882 [info] Extension host agent started.
+2025-01-13 22:54:42.940 [info] Started initializing default profile extensions in extensions installation folder. file:///home/ubuntuuser/.vscode-server/extensions
+2025-01-13 22:54:42.941 [info] [<unknown>][033fdc4c][ManagementConnection] New connection established.
+2025-01-13 22:54:42.945 [info] [<unknown>][a1873645][ExtensionHostConnection] New connection established.
+2025-01-13 22:54:42.968 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/ubuntuuser/.vscode-server/extensions
+2025-01-13 22:54:43.154 [info] [<unknown>][a1873645][ExtensionHostConnection] <29053> Launched Extension Host Process.
+2025-01-13 22:55:05.972 [info] [<unknown>][033fdc4c][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-01-13 22:55:06.014 [info] [<unknown>][a1873645][ExtensionHostConnection] <29053> Extension Host Process exited with code: 0, signal: null.
+2025-01-13 22:55:06.015 [info] Cancelling previous shutdown timeout
+2025-01-13 22:55:06.015 [info] Last EH closed, waiting before shutting down
+2025-01-14 08:32:12.414 [info] Last EH closed, shutting down

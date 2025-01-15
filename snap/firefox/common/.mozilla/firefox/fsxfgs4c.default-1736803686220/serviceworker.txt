@@ -1,0 +1,13 @@
+9
+^partitionKey=%28https%2Cgitlab.com%29
+https://www.googletagmanager.com/static/service_worker
+https://www.googletagmanager.com/static/service_worker/5190/sw.js?origin=https%3A%2F%2Fdocs.gitlab.com
+false
+{410dc8bb-76ea-4471-8307-b14a720b724f}
+1
+1736845466460122
+1736845466507063
+1736845465965058
+0
+true
+#

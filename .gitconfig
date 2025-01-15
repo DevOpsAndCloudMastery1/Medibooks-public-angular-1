@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[format]
+	pretty = oneline
+[user]
+	name = dhanya
+	email = dhanyadhilip191@gmail.com

@@ -1,0 +1,92 @@
+2025-01-14 11:46:10.981 [info] [main] Log level: Info
+2025-01-14 11:46:10.981 [info] [main] Validating found git in: "C:\Program Files\Git\bin\git.exe"
+2025-01-14 11:46:10.982 [info] Unable to find git on the PATH: "C:\Program Files\Git\bin\git.exe". Error: spawn C:\Program Files\Git\bin\git.exe ENOENT
+2025-01-14 11:46:10.982 [info] [main] Validating found git in: "git"
+2025-01-14 11:46:10.982 [info] [main] Using git "2.43.0" from "git"
+2025-01-14 11:46:10.982 [info] [Model][doInitialScan] Initial repository scan started
+2025-01-14 11:46:10.982 [info] > git rev-parse --show-toplevel [43ms]
+2025-01-14 11:46:10.984 [info] > git rev-parse --git-dir --git-common-dir [4ms]
+2025-01-14 11:46:10.993 [info] [Model][openRepository] Opened repository: /home/ubuntuuser/myproject
+2025-01-14 11:46:11.004 [info] > git config --get commit.template [4ms]
+2025-01-14 11:46:11.006 [info] > git rev-parse --show-toplevel [4ms]
+2025-01-14 11:46:11.018 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:46:11.066 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [48ms]
+2025-01-14 11:46:11.099 [info] > git status -z -uall [30ms]
+2025-01-14 11:46:11.100 [info] > git rev-parse --show-toplevel [72ms]
+2025-01-14 11:46:11.103 [info] [Model][doInitialScan] Initial repository scan completed - repositories (1), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2025-01-14 11:46:11.115 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [37ms]
+2025-01-14 11:46:11.153 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [19ms]
+2025-01-14 11:46:11.158 [info] > git config --local branch.main.vscode-merge-base [1ms]
+2025-01-14 11:46:11.159 [warning] [Git][config] git config failed: Failed to execute git
+2025-01-14 11:46:11.163 [info] > git config --get commit.template [18ms]
+2025-01-14 11:46:11.163 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:46:11.172 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [4ms]
+2025-01-14 11:46:11.196 [info] > git status -z -uall [14ms]
+2025-01-14 11:46:11.196 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [10ms]
+2025-01-14 11:46:11.202 [info] > git reflog main --grep-reflog=branch: Created from *. [39ms]
+2025-01-14 11:46:11.210 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [9ms]
+2025-01-14 11:46:11.214 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [5ms]
+2025-01-14 11:46:11.214 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2025-01-14 11:46:11.214 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2025-01-14 11:46:11.216 [info] > git config --local branch.main.vscode-merge-base [3ms]
+2025-01-14 11:46:11.216 [warning] [Git][config] git config failed: Failed to execute git
+2025-01-14 11:46:11.224 [info] > git reflog main --grep-reflog=branch: Created from *. [6ms]
+2025-01-14 11:46:11.229 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [2ms]
+2025-01-14 11:46:11.229 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2025-01-14 11:46:11.229 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2025-01-14 11:46:11.592 [info] > git check-ignore -v -z --stdin [2ms]
+2025-01-14 11:46:26.578 [info] > git check-ignore -v -z --stdin [2ms]
+2025-01-14 11:46:27.124 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:46:27.125 [info] > git config --get commit.template [6ms]
+2025-01-14 11:46:27.126 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [3ms]
+2025-01-14 11:46:27.134 [info] > git status -z -uall [3ms]
+2025-01-14 11:46:27.135 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [2ms]
+2025-01-14 11:46:39.991 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:46:39.992 [info] > git config --get commit.template [8ms]
+2025-01-14 11:46:39.995 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [4ms]
+2025-01-14 11:46:40.002 [info] > git status -z -uall [4ms]
+2025-01-14 11:46:40.005 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [5ms]
+2025-01-14 11:46:41.781 [info] > git check-ignore -v -z --stdin [3ms]
+2025-01-14 11:46:54.835 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:46:54.835 [info] > git config --get commit.template [4ms]
+2025-01-14 11:46:54.839 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [4ms]
+2025-01-14 11:46:54.845 [info] > git status -z -uall [4ms]
+2025-01-14 11:46:54.847 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [3ms]
+2025-01-14 11:47:12.050 [info] > git ls-files --stage -- /home/ubuntuuser/myproject/README.md [4ms]
+2025-01-14 11:47:12.055 [info] > git show --textconv :README.md [98ms]
+2025-01-14 11:47:12.062 [info] > git cat-file -s e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 [8ms]
+2025-01-14 11:48:14.030 [info] > git blame --root --incremental 760bdf87d4ffde1b6f3c4c82916db34c0271515d -- /home/ubuntuuser/myproject/README.md [24ms]
+2025-01-14 11:48:33.124 [info] > git show --textconv :login.html [6ms]
+2025-01-14 11:48:33.130 [info] > git ls-files --stage -- /home/ubuntuuser/myproject/login.html [7ms]
+2025-01-14 11:48:33.155 [info] > git blame --root --incremental 760bdf87d4ffde1b6f3c4c82916db34c0271515d -- /home/ubuntuuser/myproject/login.html [5ms]
+2025-01-14 11:48:33.155 [info] fatal: no such path login.html in 760bdf87d4ffde1b6f3c4c82916db34c0271515d
+2025-01-14 11:48:33.991 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:48:33.993 [info] > git config --get commit.template [8ms]
+2025-01-14 11:48:33.993 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [2ms]
+2025-01-14 11:48:33.999 [info] > git status -z -uall [3ms]
+2025-01-14 11:48:34.008 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [8ms]
+2025-01-14 11:49:12.792 [info] > git config --get commit.template [3ms]
+2025-01-14 11:49:12.796 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:49:12.798 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [3ms]
+2025-01-14 11:49:12.806 [info] > git status -z -uall [4ms]
+2025-01-14 11:49:12.808 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [2ms]
+2025-01-14 11:49:22.887 [info] > git check-ignore -v -z --stdin [5ms]
+2025-01-14 11:49:23.529 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:49:23.530 [info] > git config --get commit.template [8ms]
+2025-01-14 11:49:23.533 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [4ms]
+2025-01-14 11:49:23.545 [info] > git status -z -uall [6ms]
+2025-01-14 11:49:23.546 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [2ms]
+2025-01-14 11:49:32.890 [info] > git check-ignore -v -z --stdin [4ms]
+2025-01-14 11:49:33.441 [info] [Git][getRemotes] No remotes found in the git config file
+2025-01-14 11:49:33.442 [info] > git config --get commit.template [4ms]
+2025-01-14 11:49:33.444 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [3ms]
+2025-01-14 11:49:33.449 [info] > git status -z -uall [3ms]
+2025-01-14 11:49:33.453 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [4ms]
+2025-01-14 11:49:38.982 [info] > git show --textconv :medibooks-public-html-1/login.html [4ms]
+2025-01-14 11:49:38.987 [info] > git ls-files --stage -- /home/ubuntuuser/myproject/medibooks-public-html-1/login.html [6ms]
+2025-01-14 11:49:39.007 [info] > git blame --root --incremental 760bdf87d4ffde1b6f3c4c82916db34c0271515d -- /home/ubuntuuser/myproject/medibooks-public-html-1/login.html [2ms]
+2025-01-14 11:49:39.007 [info] fatal: no such path medibooks-public-html-1/login.html in 760bdf87d4ffde1b6f3c4c82916db34c0271515d
+2025-01-14 11:49:44.758 [info] > git show --textconv :medibooks-public-html-1/MediBooks-Logo-1.png [4ms]
+2025-01-14 11:49:44.759 [info] > git ls-files --stage -- /home/ubuntuuser/myproject/medibooks-public-html-1/MediBooks-Logo-1.png [2ms]
+2025-01-14 11:49:48.751 [info] > git show --textconv :medibooks-public-html-1/login.html [7ms]
+2025-01-14 11:49:48.754 [info] > git ls-files --stage -- /home/ubuntuuser/myproject/medibooks-public-html-1/login.html [6ms]
