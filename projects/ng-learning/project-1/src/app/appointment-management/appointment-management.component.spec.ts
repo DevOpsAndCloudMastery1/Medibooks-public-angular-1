@@ -27,7 +27,7 @@ describe('AppointmentManagementComponent', () => {
 
   it('should display available doctors', () => {
     const doctorCards = el.queryAll(By.css('.card'));
-    expect(doctorCards.length).toBeGreaterThan(0); // Check if at least one doctor card exists
+    expect(doctorCards.length).toBe(6); // Updated to reflect the fixed number of doctors
   });
 
   it('should set selectedDoctor when selectDoctor is called', () => {
@@ -63,7 +63,7 @@ describe('AppointmentManagementComponent', () => {
     expect(window.alert).toHaveBeenCalledWith('Appointment booked successfully!');
   });
 
-  it('should display an alert when the form is submitted with missing data', () => {
+    it('should display an alert when the form is submitted with missing data', () => {
     spyOn(window, 'alert');
     const form = el.query(By.css('form'));
     form.triggerEventHandler('submit', null);
@@ -84,13 +84,13 @@ describe('AppointmentManagementComponent', () => {
     expect(component.appointmentDate).toBe('');
   });
 
-  it('should load bookings from localStorage on initialization', () => {
+    it('should load bookings from localStorage on initialization', () => {
     const activeBookings = [{ doctor: 'Dr. Test', date: '2024-01-01', time: 'TBD', status: 'Confirmed' }];
     const pastBookings: any[] = []; // Define pastBookings as an empty array of type any[]
     localStorage.setItem('activeBookings', JSON.stringify(activeBookings));
     localStorage.setItem('pastBookings', JSON.stringify(pastBookings));
 
-    fixture = TestBed.createComponent(AppointmentBookingComponent);
+    fixture = TestBed.createComponent(AppointmentManagementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
@@ -98,6 +98,7 @@ describe('AppointmentManagementComponent', () => {
     expect(component.activeBookings[0].doctor).toBe('Dr. Test');
     expect(component.pastBookings.length).toBe(0);
   });
+
   describe('reschedule', () => {
     it('should reschedule an appointment', () => {
       const initialDate = '2024-01-01';
@@ -138,5 +139,23 @@ describe('AppointmentManagementComponent', () => {
       expect(component.activeBookings.length).toBe(1);
       expect(component.loadBookings).not.toHaveBeenCalled();
     });
+  });
+
+  it('should move past appointments to pastBookings on loadBookings', () => {
+    // Set up localStorage with a past appointment
+    const pastDate = new Date();
+    pastDate.setDate(pastDate.getDate() - 1); // Set date to yesterday
+    const pastDateString = pastDate.toISOString().slice(0, 10);
+    localStorage.setItem('activeBookings', JSON.stringify([{ doctor: 'Dr. Test', date: pastDateString, time: 'TBD', status: 'Confirmed' }]));
+    localStorage.setItem('pastBookings', JSON.stringify([]));
+
+    // Create a new component instance to load the bookings
+    fixture = TestBed.createComponent(AppointmentManagementComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // Assert that the past appointment is now in pastBookings
+    expect(component.activeBookings.length).toBe(0);
+    expect(component.pastBookings.length).toBe(1);
   });
 });
