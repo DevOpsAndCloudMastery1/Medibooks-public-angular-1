@@ -1,1 +1,41 @@
-<p>appointment-management works!</p>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Book and Manage Appointments</h1>
+  
+    <section class="mb-5">
+      <h2>Available Doctors</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div class="col mb-4" *ngFor="let doctor of ['Dr. John Smith - Cardiologist', 'Dr. Emma Davis - Neurologist', 'Dr. Michael Brown - Pediatrician', 'Dr. Olivia Wilson - Orthopedic Surgeon', 'Dr. Liam Johnson - Dermatologist', 'Dr. Sophia Martinez - Gynecologist']; let i = index">
+          <div class="card">
+            <img src="images/doctor{{i+1}}.jpg" class="card-img-top" alt="{{doctor}}">
+            <div class="card-body">
+              <h5 class="card-title">{{doctor}}</h5>
+              <button class="btn btn-primary" (click)="selectDoctor(doctor)">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section>
+      <h2>Book an Appointment</h2>
+      <form (submit)="bookAppointment()">
+        <div class="mb-3">
+          <label for="doctor" class="form-label">Selected Doctor:</label>
+          <input type="text" id="doctor" class="form-control" [(ngModel)]="selectedDoctor" name="doctor" readonly required>
+        </div>
+        <div class="mb-3">
+          <label for="patient-name" class="form-label">Your Name:</label>
+          <input type="text" id="patient-name" class="form-control" [(ngModel)]="patientName" name="patient-name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email:</label>
+          <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="appointment-date" class="form-label">Appointment Date:</label>
+          <input type="date" id="appointment-date" class="form-control" [(ngModel)]="appointmentDate" name="appointment-date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </section>
+  </div>
