@@ -18,7 +18,7 @@ describe('DoctorDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule,HttpClientTestingModule,RouterModule,DoctorDetailsComponent]
+      imports: [CommonModule, HttpClientTestingModule, RouterModule, DoctorDetailsComponent]
       providers: [
         { provide: ActivatedRoute, useValue: mockActivatedRoute }
       ]
