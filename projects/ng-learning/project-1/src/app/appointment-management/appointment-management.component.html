@@ -4,12 +4,13 @@
   <section class="mb-5">
     <h2>Available Doctors</h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-      <div class="col mb-4" *ngFor="let doctor of ['Dr. John Smith - Cardiologist', 'Dr. Emma Davis - Neurologist', 'Dr. Michael Brown - Pediatrician', 'Dr. Olivia Wilson - Orthopedic Surgeon', 'Dr. Liam Johnson - Dermatologist', 'Dr. Sophia Martinez - Gynecologist']; let i = index">
+      <div class="col mb-4" *ngFor="let doctor of availableDoctors; let i = index">
         <div class="card">
-          <img src="images/doctor{{i+1}}.jpg" class="card-img-top" alt="{{doctor}}">
+          <img [src]="doctor.image" class="card-img-top" alt="{{doctor.name}}">
           <div class="card-body">
-            <h5 class="card-title">{{doctor}}</h5>
-            <button class="btn btn-primary" (click)="selectDoctor(doctor)">Book Appointment</button>
+            <h5 class="card-title">{{doctor.name}}</h5>
+            <p class="card-text">{{ doctor.specialization }}</p>
+            <button class="btn btn-primary" (click)="selectDoctor(doctor.name + ' - ' + doctor.specialization)">Book Appointment</button>
           </div>
         </div>
       </div>
@@ -18,72 +19,53 @@
 
   <section>
     <h2>Book an Appointment</h2>
-    <form (submit)="bookAppointment()">
+    <form (ngSubmit)="bookAppointment()">
       <div class="mb-3">
         <label for="doctor" class="form-label">Selected Doctor:</label>
-        <input type="text" id="doctor" class="form-control" [(ngModel)]="selectedDoctor" name="doctor" readonly required>
+        <input type="text" id="doctor" name="doctor" class="form-control" [(ngModel)]="selectedDoctor" readonly required>
       </div>
       <div class="mb-3">
         <label for="patient-name" class="form-label">Your Name:</label>
-        <input type="text" id="patient-name" class="form-control" [(ngModel)]="patientName" name="patient-name" required>
+        <input type="text" id="patient-name" name="patientName" class="form-control" [(ngModel)]="patientName" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Your Email:</label>
-        <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email" required>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="email" required>
       </div>
       <div class="mb-3">
         <label for="appointment-date" class="form-label">Appointment Date:</label>
-        <input type="date" id="appointment-date" class="form-control" [(ngModel)]="appointmentDate" name="appointment-date" required>
+        <input type="date" id="appointment-date" name="appointmentDate" class="form-control" [(ngModel)]="appointmentDate" required>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+      <div id="confirmation" class="mt-4" *ngIf="appointmentConfirmed">
+        <h3>Appointment Confirmed!</h3>
+        <p><strong>Doctor:</strong> {{selectedDoctor}}</p>
+        <p><strong>Name:</strong> {{patientName}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Date:</strong> {{appointmentDate}}</p>
+    </div>
   </section>
 
-  <section *ngIf="activeBookings.length > 0">
-    <h2>Active Appointments</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Doctor</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let booking of activeBookings; let i = index">
-          <td>{{ booking.doctor }}</td>
-          <td>{{ booking.date }}</td>
-          <td>{{ booking.time }}</td>
-          <td>{{ booking.status }}</td>
-          <td>
-            <button class="btn btn-sm btn-warning" (click)="reschedule(i)">Reschedule</button>
-            <button class="btn btn-sm btn-danger" (click)="cancel(i)">Cancel</button>
-             <button class="btn btn-sm btn-success" (click)="markAsCompleted(i)">Complete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-    <section *ngIf="pastBookings.length > 0">
-    <h2>Past Appointments</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Doctor</th>
-          <th>Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let booking of pastBookings">
-          <td>{{ booking.doctor }}</td>
-          <td>{{ booking.date }}</td>
-          <td>{{ booking.status }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <section>
+    <h2>Appointment Tracking and Management</h2>
+    <div class="mb-4">
+      <h3>Active Bookings</h3>
+      <ul id="active-bookings" class="list-group">
+        <li class="list-group-item" *ngFor="let booking of activeBookings; let i = index">
+          {{booking.doctor}} - {{booking.date}} at {{booking.time}} - {{booking.status}}
+          <button class="btn btn-warning btn-sm ms-2" (click)="reschedule(i)">Reschedule</button>
+          <button class="btn btn-danger btn-sm ms-2" (click)="cancel(i)">Cancel</button>
+        </li>
+      </ul>
+    </div>
+    <div class="mb-4">
+      <h3>Past Bookings</h3>
+      <ul id="past-bookings" class="list-group">
+        <li class="list-group-item" *ngFor="let booking of pastBookings">
+          {{booking.doctor}} - {{booking.date}} - {{booking.status}}
+        </li>
+      </ul>
+    </div>
   </section>
 </div>
