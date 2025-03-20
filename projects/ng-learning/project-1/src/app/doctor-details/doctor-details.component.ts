@@ -34,6 +34,7 @@ export class DoctorDetailsComponent  implements OnInit {
         this.http.get<{ doctors: Doctor[] }>('data/doctors.json')
           .subscribe(data => {
             this.doctor = data.doctors.find(doc => doc.id === this.doctorId);
+            console.log('Fetched doctor:', this.doctor);
           });
       }
     });
