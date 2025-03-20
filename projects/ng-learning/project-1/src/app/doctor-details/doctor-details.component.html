@@ -1,1 +1,15 @@
-<p>doctor-details works!</p>
+<div class="container mt-4">
+    <h1 class="text-center">MediBooks - Doctor Details</h1>
+    <div class="doctor-profile" *ngIf="doctor">
+      <img id="doctor-img" [src]="doctor.img" [alt="Doctor Image">
+      <h2 id="doctor-name">{{ doctor.name }}</h2>
+      <p class="doctor-info"><strong>Specialization:</strong> <span id="doctor-specialization">{{ doctor.specialization }}</span></p>
+      <p class="doctor-info"><strong>Experience:</strong> <span id="doctor-experience">{{ doctor.experience }}</span></p>
+      <p class="doctor-info"><strong>Location:</strong> <span id="doctor-location">{{ doctor.location }}</span></p>
+      <p id="doctor-description">{{ doctor.description }}</p>
+      <a [routerLink]="['/appointment-booking']" [queryParams]="{id: doctor.id}" class="btn btn-primary" id="book-appointment">Book Appointment</a>
+    </div>
+      <div class="doctor-profile" *ngIf="!doctor">
+          Doctor not Found
+      </div>
+  </div>
