@@ -12,8 +12,7 @@ describe('DoctorSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, FormsModule, RouterModule, HttpClientTestingModule],
-      declarations: [DoctorSearchComponent], // Component should be declared, not imported
+      imports: [CommonModule, FormsModule, RouterModule, HttpClientTestingModule,DoctorSearchComponent],
       providers: []
     }).compileComponents();
   });
