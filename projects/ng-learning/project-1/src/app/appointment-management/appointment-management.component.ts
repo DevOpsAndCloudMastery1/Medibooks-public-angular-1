@@ -27,6 +27,7 @@ export class AppointmentManagementComponent implements OnInit {
   appointmentConfirmed = false;
 
   ngOnInit(): void {
+    console.log('Component Initialized');
     this.loadBookings();
   }
 
