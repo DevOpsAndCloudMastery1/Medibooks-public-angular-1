@@ -39,8 +39,8 @@ export class AppointmentManagementComponent implements OnInit {
     this.loadBookings();
   }
 
-  selectDoctor(doctorInfo: string): void {
-    this.selectedDoctor = doctorInfo;
+  selectDoctor(doctorName: string): void {
+    this.selectedDoctor = doctorName;
   }
 
   bookAppointment(): void {
@@ -58,7 +58,7 @@ export class AppointmentManagementComponent implements OnInit {
 
     this.activeBookings.push(newBooking);
     this.saveBookings();
-    alert('Appointment booked successfully!');
+    alert(`Appointment booked successfully!\n\n👨‍⚕️ Doctor: ${this.selectedDoctor}\n📅 Date: ${this.appointmentDate}\n👤 Patient: ${this.patientName}`);
     this.resetForm();
     this.loadBookings();
     this.appointmentConfirmed = true; // Show confirmation
