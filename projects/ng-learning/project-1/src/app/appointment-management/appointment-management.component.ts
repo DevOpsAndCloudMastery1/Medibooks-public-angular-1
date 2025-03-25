@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-appointment-management',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './appointment-management.component.html',
   styleUrl: './appointment-management.component.css'
 })
 export class AppointmentManagementComponent implements OnInit {
   availableDoctors = [
-    { name: 'Dr. John Smith', specialization: 'Cardiologist', image: 'assets/images/doctor1.jpg' },
-    { name: 'Dr. Emma Davis', specialization: 'Neurologist', image: 'assets/images/doctor2.jpg' },
-    { name: 'Dr. Michael Brown', specialization: 'Pediatrician', image: 'assets/images/doctor3.jpg' },
-    { name: 'Dr. Olivia Wilson', specialization: 'Orthopedic Surgeon', image: 'assets/images/doctor4.jpg' },
-    { name: 'Dr. Liam Johnson', specialization: 'Dermatologist', image: 'assets/images/doctor5.jpg' },
-    { name: 'Dr. Sophia Martinez', specialization: 'Gynecologist', image: 'assets/images/doctor6.jpg' }
+    { name: 'Dr. John Smith', specialization: 'Cardiologist', image: 'images/doctor1.jpg' },
+    { name: 'Dr. Emma Davis', specialization: 'Neurologist', image: 'images/doctor2.jpg' },
+    { name: 'Dr. Michael Brown', specialization: 'Pediatrician', image: 'images/doctor3.jpg' },
+    { name: 'Dr. Olivia Wilson', specialization: 'Orthopedic Surgeon', image: 'images/doctor4.jpg' },
+    { name: 'Dr. Liam Johnson', specialization: 'Dermatologist', image: 'images/doctor5.jpg' },
+    { name: 'Dr. Sophia Martinez', specialization: 'Gynecologist', image: 'images/doctor6.jpg' }
   ];
   activeBookings: { doctor: string; date: string; time: string; status: string }[] = [];
   pastBookings: { doctor: string; date: string; status: string }[] = [];
@@ -26,7 +30,11 @@ export class AppointmentManagementComponent implements OnInit {
   appointmentDate: string = '';
   appointmentConfirmed = false;
 
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+
+
   ngOnInit(): void {
+
     console.log('Component Initialized');
     this.loadBookings();
   }
@@ -102,6 +110,7 @@ export class AppointmentManagementComponent implements OnInit {
   moveToPastBookings(): void {
     const currentDate = new Date().toISOString().split("T")[0];
     for (let i = this.activeBookings.length - 1; i >= 0; i--) {
+      const bookingDate = new Date(this.activeBookings[i].date).toISOString().split("T")[0]; // Ensure format match
       if (this.activeBookings[i].date < currentDate) {
         const booking = this.activeBookings.splice(i, 1)[0];
         booking.status = 'Completed';  // or 'Missed', depending on your logic
