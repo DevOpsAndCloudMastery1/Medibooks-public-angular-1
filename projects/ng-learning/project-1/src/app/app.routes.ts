@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'doctor-search', component: DoctorSearchComponent },
   { path: 'doctor-details/:id', component: DoctorDetailsComponent },
   { path: 'appointment-booking', component: AppointmentBookingComponent },
-  { path: 'appointments', component: AppointmentManagementComponent },
+  { path: 'manage-appointments', component: AppointmentManagementComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   ];
