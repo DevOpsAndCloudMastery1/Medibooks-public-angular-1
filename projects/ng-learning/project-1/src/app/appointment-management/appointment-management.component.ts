@@ -31,8 +31,8 @@ export class AppointmentManagementComponent implements OnInit {
     this.loadBookings();
   }
 
-  selectDoctor(doctorName: string): void {
-    this.selectedDoctor = doctorName;
+  selectDoctor(doctorInfo: string): void {
+    this.selectedDoctor = doctorInfo;
   }
 
   bookAppointment(): void {
