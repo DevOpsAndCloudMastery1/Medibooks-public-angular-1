@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 interface UserProfile {
@@ -13,7 +13,7 @@ interface UserProfile {
 @Component({
   selector: 'app-user-profile-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './user-profile-edit.component.html',
   styleUrl: './user-profile-edit.component.css'
 })
@@ -48,7 +48,7 @@ export class UserProfileEditComponent implements OnInit {
       },
       (error) => {
         console.error('Error updating user profile:', error); // Added error handling
-        alert('Failed to load user profile. Please check API connection.');
+        alert(`API Error: ${error.message}.`); // Show real error message
       }
     );
 }
