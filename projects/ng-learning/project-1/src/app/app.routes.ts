@@ -18,6 +18,6 @@ export const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'user-profile/edit', component: UserProfileEditComponent },
   { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   ];
 
