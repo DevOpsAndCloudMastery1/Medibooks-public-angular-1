@@ -29,15 +29,15 @@ export class UserProfileEditComponent implements OnInit {
   ngOnInit(): void {
     // Load user data from an API (replace with your actual API endpoint)
     this.http.get<UserProfile>('/api/user/profile')
-      .subscribe(data => {
-        this.userProfile = data;
-      },
-      (error) => {
+      .subscribe({
+        next: (data) => this.userProfile = data, 
+        error: (error) => {
         console.error('Error loading user profile:', error); // Added error handling
-      }
-    );
-    
-  }
+        alert(`API Error: ${error.message}`); // Fixed string interpolation
+        }
+      });
+      
+     }
 
   onSubmit(): void {
     // Send updated data to the API (replace with your actual API endpoint)
