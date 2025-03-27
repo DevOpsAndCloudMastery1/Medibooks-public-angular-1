@@ -31,7 +31,12 @@ export class UserProfileEditComponent implements OnInit {
     this.http.get<UserProfile>('/api/user/profile')
       .subscribe(data => {
         this.userProfile = data;
-      });
+      },
+      (error) => {
+        console.error('Error loading user profile:', error); // Added error handling
+      }
+    );
+    
   }
 
   onSubmit(): void {
@@ -40,9 +45,13 @@ export class UserProfileEditComponent implements OnInit {
       .subscribe(() => {
         // Redirect to the user profile page after successful update
         this.router.navigate(['/user-profile']);
-      });
-  }
-
+      },
+      (error) => {
+        console.error('Error updating user profile:', error); // Added error handling
+      }
+    );
+}
+      
   onCancel(): void {
     this.router.navigate(['/user-profile']);
   }

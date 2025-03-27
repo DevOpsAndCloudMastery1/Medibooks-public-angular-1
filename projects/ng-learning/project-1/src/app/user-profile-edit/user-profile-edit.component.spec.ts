@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-
 describe('UserProfileEditComponent', () => {
   let component: UserProfileEditComponent;
   let fixture: ComponentFixture<UserProfileEditComponent>;
