@@ -48,6 +48,7 @@ export class UserProfileEditComponent implements OnInit {
       },
       (error) => {
         console.error('Error updating user profile:', error); // Added error handling
+        alert('Failed to load user profile. Please check API connection.');
       }
     );
 }
