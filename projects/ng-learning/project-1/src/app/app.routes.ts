@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'appointment-booking', component: AppointmentBookingComponent },
   { path: 'appointment-management', component: AppointmentManagementComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'user-profile/edit', component: UserProfileEditComponent },
+  { path: 'user-profile-edit', component: UserProfileEditComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   ];
