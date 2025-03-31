@@ -33,8 +33,10 @@ export class UserProfileEditComponent implements OnInit {
         next: (data) => this.userProfile = data, 
         error: (error) => {
         console.error('Error loading user profile:', error); // Added error handling
+        if (typeof window !== 'undefined') {
         alert(`API Error: ${error.message}`); // Fixed string interpolation
         }
+      }
       });
       
      }
@@ -42,15 +44,15 @@ export class UserProfileEditComponent implements OnInit {
   onSubmit(): void {
     // Send updated data to the API (replace with your actual API endpoint)
     this.http.put('/api/user/profile', this.userProfile)
-      .subscribe(() => {
-        // Redirect to the user profile page after successful update
-        this.router.navigate(['/user-profile']);
-      },
-      (error) => {
-        console.error('Error updating user profile:', error); // Added error handling
-        alert(`API Error: ${error.message}.`); // Show real error message
+    .subscribe({
+      next: () => this.router.navigate(['/user-profile']),
+      error: (error) => {
+        console.error('Error updating user profile:', error);
+        if (typeof window !== 'undefined') {
+          alert(`API Error: ${error.message}`);
+        }
       }
-    );
+    });
 }
       
   onCancel(): void {
