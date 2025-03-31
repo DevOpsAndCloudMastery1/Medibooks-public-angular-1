@@ -9,7 +9,26 @@ describe('DoctorReviewsComponent', () => {
   let fixture: ComponentFixture<DoctorReviewsComponent>;
   let router: Router;
 
+  const localStorageMock = {
+    getItem: (key: string): string | null => {
+      return key === 'doctorReviews' ? JSON.stringify([{ doctor: 'Dr. John Smith', rating: '5', text: 'Good', date: '2024-01-01' }]) : null;
+    },
+    setItem: (key: string, value: string) => {
+      // Mock implementation
+    },
+    clear: () => {
+      // Mock implementation
+    },
+  };
+
   beforeEach(async () => {
+    spyOn(localStorageMock, 'getItem').and.callThrough();
+    spyOn(localStorageMock, 'setItem').and.callThrough();
+
+    Object.defineProperty(window, 'localStorage', {
+      value: localStorageMock,
+    });
+
     await TestBed.configureTestingModule({
       imports: [DoctorReviewsComponent, FormsModule, RouterTestingModule]
     })
@@ -34,9 +53,7 @@ describe('DoctorReviewsComponent', () => {
   it('should load reviews for the selected doctor', () => {
     component.selectedDoctor = 'Dr. Emma Davis';
     component.loadReviews();
-    const storedReviews = JSON.parse(localStorage.getItem('doctorReviews') || '[]');
-    const filteredReviews = storedReviews.filter((r: any) => r.doctor === component.selectedDoctor);
-    expect(component.reviews).toEqual(filteredReviews);
+    expect(component.reviews).toEqual([]);
   });
 
   it('should submit a review and update the review list', () => {

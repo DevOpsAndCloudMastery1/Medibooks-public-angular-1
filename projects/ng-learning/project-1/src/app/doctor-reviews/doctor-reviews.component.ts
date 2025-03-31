@@ -21,8 +21,15 @@ export class DoctorReviewsComponent  implements OnInit {
   }
 
   loadReviews() {
+    if (typeof localStorage !== 'undefined') {
     let storedReviews = JSON.parse(localStorage.getItem('doctorReviews') || '[]');
     this.reviews = storedReviews.filter((r: any) => r.doctor === this.selectedDoctor);
+  } else {
+    // Handle the case where localStorage is not available.
+      // For example, provide default reviews or use an in-memory store.
+      console.warn('localStorage is not available. Using default reviews.');
+      this.reviews = []; // Or some default data.
+    }
   }
 
   submitReview() {
@@ -37,11 +44,15 @@ export class DoctorReviewsComponent  implements OnInit {
       text: this.newReview.text,
       date: new Date().toLocaleDateString(),
     };
-
+    
+    if (typeof localStorage !== 'undefined') {
     let storedReviews = JSON.parse(localStorage.getItem('doctorReviews') || '[]');
     storedReviews.push(review);
     localStorage.setItem('doctorReviews', JSON.stringify(storedReviews));
-
+  } else {
+    console.warn('localStorage is not available. Review not saved.');
+    // In a real app, you might use an in-memory store or queue the save for later.
+  }
     this.loadReviews(); // Refresh the review list
     this.newReview.text = ''; // Clear the review input
   }
