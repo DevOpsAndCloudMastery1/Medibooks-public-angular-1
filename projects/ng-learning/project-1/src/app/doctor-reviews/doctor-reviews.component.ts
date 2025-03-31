@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { Component, OnInit, inject, AfterViewInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -10,23 +10,33 @@ import { CommonModule } from '@angular/common';
   templateUrl: './doctor-reviews.component.html',
   styleUrl: './doctor-reviews.component.css'
 })
-export class DoctorReviewsComponent  implements OnInit {
-  selectedDoctor: string = 'Dr. John Smith'; // Initial value
+export class DoctorReviewsComponent implements OnInit, AfterViewInit {
+  selectedDoctor: string = 'Dr. John Smith';
   reviews: any[] = [];
-  newReview: any = { rating: '5', text: '' }; // Initialize newReview object
+  newReview: any = { rating: '5', text: '' };
   private router = inject(Router);
-  constructor(){}
+
+  constructor() { }
+
   ngOnInit(): void {
+    // Initial setup (if any) that doesn't require localStorage
+  }
+
+  ngAfterViewInit(): void {
+    // Load reviews after the view has been initialized in the browser
     this.loadReviews();
   }
 
   loadReviews() {
     if (typeof localStorage !== 'undefined') {
-    let storedReviews = JSON.parse(localStorage.getItem('doctorReviews') || '[]');
-    this.reviews = storedReviews.filter((r: any) => r.doctor === this.selectedDoctor);
-  } else {
-    // Handle the case where localStorage is not available.
-      // For example, provide default reviews or use an in-memory store.
+      try {
+        let storedReviews = JSON.parse(localStorage.getItem('doctorReviews') || '[]');
+        this.reviews = storedReviews.filter((r: any) => r.doctor === this.selectedDoctor);
+      } catch (error) {
+        console.error("Error parsing localStorage:", error);
+        this.reviews = []; // Handle parsing errors gracefully
+      }
+    } else {
       console.warn('localStorage is not available. Using default reviews.');
       this.reviews = []; // Or some default data.
     }
@@ -44,21 +54,26 @@ export class DoctorReviewsComponent  implements OnInit {
       text: this.newReview.text,
       date: new Date().toLocaleDateString(),
     };
-    
+
     if (typeof localStorage !== 'undefined') {
-    let storedReviews = JSON.parse(localStorage.getItem('doctorReviews') || '[]');
-    storedReviews.push(review);
-    localStorage.setItem('doctorReviews', JSON.stringify(storedReviews));
-  } else {
-    console.warn('localStorage is not available. Review not saved.');
-    // In a real app, you might use an in-memory store or queue the save for later.
-  }
+      try {
+        let storedReviews = JSON.parse(localStorage.getItem('doctorReviews') || '[]');
+        storedReviews.push(review);
+        localStorage.setItem('doctorReviews', JSON.stringify(storedReviews));
+      } catch (error) {
+        console.error("Error saving to localStorage:", error);
+        // Handle saving errors gracefully (e.g., display an error message)
+      }
+    } else {
+      console.warn('localStorage is not available. Review not saved.');
+      // Consider alternative storage (in-memory, cookie, etc.)
+    }
+
     this.loadReviews(); // Refresh the review list
-    this.newReview.text = ''; // Clear the review input
+    this.newReview.text = '';
   }
 
   goToHome() {
-    this.router.navigate(['/home']); // Adjust the route as needed
+    this.router.navigate(['/home']);
   }
- 
 }

@@ -8,27 +8,39 @@ describe('DoctorReviewsComponent', () => {
   let component: DoctorReviewsComponent;
   let fixture: ComponentFixture<DoctorReviewsComponent>;
   let router: Router;
-
-  const localStorageMock = {
-    getItem: (key: string): string | null => {
-      return key === 'doctorReviews' ? JSON.stringify([{ doctor: 'Dr. John Smith', rating: '5', text: 'Good', date: '2024-01-01' }]) : null;
-    },
-    setItem: (key: string, value: string) => {
-      // Mock implementation
-    },
-    clear: () => {
-      // Mock implementation
-    },
-  };
+  let localStorageMock: any;
 
   beforeEach(async () => {
+    // Mock localStorage
+    localStorageMock = {
+      getItem: (key: string): string | null => {
+        if (key === 'doctorReviews') {
+          return JSON.stringify([{ doctor: 'Dr. John Smith', rating: '5', text: 'Good', date: '2024-01-01' }]);
+        }
+        return null;
+      },
+      setItem: (key: string, value: string) => {
+        (localStorageMock as any).store[key] = String(value); //Store in mock
+      },
+      removeItem: (key: string) => {
+        delete (localStorageMock as any).store[key];
+      },
+      clear: () => {
+        (localStorageMock as any).store = {}; // Clear the store
+      },
+      store: {}  // A store to store the mock data
+    };
+
     spyOn(localStorageMock, 'getItem').and.callThrough();
     spyOn(localStorageMock, 'setItem').and.callThrough();
+    spyOn(localStorageMock, 'removeItem').and.callThrough();
+    spyOn(localStorageMock, 'clear').and.callThrough();
 
     Object.defineProperty(window, 'localStorage', {
       value: localStorageMock,
     });
 
+  
     await TestBed.configureTestingModule({
       imports: [DoctorReviewsComponent, FormsModule, RouterTestingModule]
     })
@@ -45,9 +57,9 @@ describe('DoctorReviewsComponent', () => {
   });
 
   it('should load reviews on init', () => {
-    spyOn(component, 'loadReviews');
     component.ngOnInit();
-    expect(component.loadReviews).toHaveBeenCalled();
+    expect(localStorageMock.getItem).toHaveBeenCalledWith('doctorReviews');
+    expect(component.reviews.length).toBeGreaterThan(0);
   });
 
   it('should load reviews for the selected doctor', () => {
@@ -59,9 +71,17 @@ describe('DoctorReviewsComponent', () => {
   it('should submit a review and update the review list', () => {
     component.selectedDoctor = 'Dr. John Smith';
     component.newReview = { rating: '4', text: 'Great doctor!' };
-    spyOn(component, 'loadReviews');
     component.submitReview();
-    expect(component.loadReviews).toHaveBeenCalled();
+    expect(localStorageMock.setItem).toHaveBeenCalled();
+
+     // You need to fetch the updated data from localStorageMock to verify
+     const storedReviews = JSON.parse(localStorageMock.getItem('doctorReviews') || '[]');
+     expect(storedReviews).toContain({
+      doctor: 'Dr. John Smith',
+      rating: '4',
+      text: 'Great doctor!',
+      date: new Date().toLocaleDateString(),
+    });
     expect(component.newReview.text).toEqual('');
   });
 
