@@ -6,6 +6,7 @@ import { AppointmentBookingComponent } from './appointment-booking/appointment-b
 import { AppointmentManagementComponent } from './appointment-management/appointment-management.component';
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component'; 
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DoctorReviewsComponent } from './doctor-reviews/doctor-reviews.component';
 import { HomeComponent } from './home/home.component';
 
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'appointment-management', component: AppointmentManagementComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'user-profile-edit', component: UserProfileEditComponent },
+  { path: 'doctor-reviews', component: DoctorReviewsComponent},
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   ];
