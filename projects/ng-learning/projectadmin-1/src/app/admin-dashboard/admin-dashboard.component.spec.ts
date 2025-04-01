@@ -6,22 +6,17 @@ describe('AdminDashboardComponent', () => {
   let component: AdminDashboardComponent;
   let fixture: ComponentFixture<AdminDashboardComponent>;
 
-  beforeAll(() => {
-    // Mock only the necessary parts of window.location
-    Object.defineProperty(window, 'location', {
-      configurable: true,
-      value: { assign: jest.fn() } // Mock only 'assign'
-    });
-  });
-
-  beforeEach(async () => {
+    beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminDashboardComponent, RouterTestingModule], // Keep component in imports for standalone
+      imports: [AdminDashboardComponent, RouterTestingModule], 
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    spyOn(window, 'alert'); // Mock alert
+    spyOn(window.location, 'assign'); // Mock redirection
   });
 
   it('should create', () => {
@@ -34,19 +29,13 @@ describe('AdminDashboardComponent', () => {
   });
 
   it('should call alert and attempt redirection on logout', () => {
-    const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
-    const locationSpy = jest.spyOn(window.location, 'assign');
-
     const logoutButton = fixture.nativeElement.querySelector('.btn-logout') as HTMLButtonElement;
     expect(logoutButton).toBeTruthy();
 
-    logoutButton.click(); // Simulate click event
-    fixture.detectChanges(); // Ensure updates are applied
+    logoutButton.click(); // Simulate click
+    fixture.detectChanges();
 
-    expect(alertSpy).toHaveBeenCalledWith('You have logged out!');
-    expect(locationSpy).toHaveBeenCalledWith('login.html');
-
-    alertSpy.mockRestore();
-    locationSpy.mockRestore();
+    expect(window.alert).toHaveBeenCalledWith('You have logged out!');
+    expect(window.location.assign).toHaveBeenCalledWith('login.html');
   });
 });
