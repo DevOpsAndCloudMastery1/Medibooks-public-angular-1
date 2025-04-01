@@ -11,9 +11,4 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 export class AppComponent {
   title = 'Medibooks';
 
-  logout(): void {
-    console.log('Global Logout clicked');
-    alert('You have logged out!');
-    window.location.href = 'login.html';
   }
-}
