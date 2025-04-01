@@ -1,1 +1,51 @@
-<p>manage-doctors works!</p>
+<!-- Main Content -->
+<div class="main-content">
+    <h1>Manage Doctors</h1>
+
+    <!-- Add Doctor Form -->
+    <form (ngSubmit)="addDoctor($event)">
+        <label for="doctor-name">Doctor Name:</label>
+        <input type="text" id="doctor-name" [(ngModel)]="doctorName" name="doctorName" class="form-input" required>
+
+        <label for="specialization">Specialization:</label>
+        <input type="text" id="specialization" [(ngModel)]="specialization" name="specialization" class="form-input" required>
+
+        <label for="experience">Experience:</label>
+        <input type="text" id="experience" [(ngModel)]="experience" name="experience" class="form-input" required>
+
+        <label for="availability">Availability:</label>
+        <select id="availability" [(ngModel)]="availability" name="availability" class="form-input">
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <label for="photo-upload">Doctor Photo:</label>
+        <input type="file" id="photo-upload" [(ngModel)]="photo" name="photo" class="form-input" required>
+
+        <button type="submit" class="button">Add Doctor</button>
+    </form>
+
+    <h2>Doctors List</h2>
+    <table id="doctors-list">
+        <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Specialization</th>
+                <th>Experience</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let doctor of doctors; let i = index">
+                <td><img [src]="doctor.photo" alt="{{doctor.name}}" class="doctor-photo"> <h3>{{doctor.name}}</h3><p>Specialization: {{doctor.specialization}}</p></td>
+                <td>{{doctor.specialization}}</td>
+                <td>{{doctor.experience}}</td>
+                <td>
+                    <button class="button" (click)="editDoctor(i)">Edit</button>
+                    <button class="button" (click)="deleteDoctor(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
