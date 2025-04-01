@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';    // for handling template-driven forms
+
 
 @Component({
   selector: 'app-admin-login',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule ],
   templateUrl: './admin-login.component.html',
   styleUrls: ['./admin-login.component.css']
 })
@@ -12,7 +16,9 @@ export class AdminLoginComponent {
     email: "admin@medibooks.com",
     password: "admin123"
   };
-
+  
+  constructor(private router: Router) {}
+  
   handleLogin(event: Event) {
     event.preventDefault();
     const email = (document.getElementById("email") as HTMLInputElement).value;
