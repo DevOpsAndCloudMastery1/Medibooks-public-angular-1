@@ -1,21 +1,35 @@
 <div class="admin-login-container">
-    <img src="images/MediBooks-Logo-1.png" alt="MediBooks Logo" class="admin-logo">
-    <h2>Admin Login</h2>
-    <form id="loginForm" (submit)="handleLogin($event)">
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" required>
-      </div>
-      <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Login</button>
-      </div>
-    </form>
-    <p>
-      <span class="forgot-password" (click)="handleForgotPassword()">Forgot Password?</span>
-    </p>
-  </div>
-  
+  <img src="images/MediBooks-Logo-1.png" alt="MediBooks Logo" class="admin-logo">
+  <h2>Admin Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="handleLogin($event)">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+          type="email"
+          class="form-control"
+          id="email"
+          required
+          name="email"       
+          [(ngModel)]="email">   
+      <!-- ✅ Added name="email" and [(ngModel)]="email" -->
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+          type="password"
+          class="form-control"
+          id="password"
+          required
+          name="password"    
+          [(ngModel)]="password"> 
+      <!-- ✅ Added name="password" and [(ngModel)]="password" -->
+    </div>
+    <div class="mb-3">
+       <!-- Disable button if form is invalid (optional but good practice) -->
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Login</button>
+    </div>
+  </form>
+  <p>
+    <span class="forgot-password" (click)="handleForgotPassword()">Forgot Password?</span>
+  </p>
+</div>

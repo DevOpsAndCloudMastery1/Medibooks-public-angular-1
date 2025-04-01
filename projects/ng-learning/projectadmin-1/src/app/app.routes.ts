@@ -4,6 +4,6 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 
 export const routes: Routes = [
    { path: 'login', component: AdminLoginComponent },
-   { path: 'dashboard', component: AdminDashboardComponent },
+   { path: 'admin-dashboard', component: AdminDashboardComponent },
    { path: '', redirectTo: '/login', pathMatch: 'full' },
-];
+   ];

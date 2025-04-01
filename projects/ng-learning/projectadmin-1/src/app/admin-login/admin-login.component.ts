@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';    // for handling template-driven forms
+import { FormsModule } from '@angular/forms';  
+import { RouterModule } from '@angular/router'; 
 
 
 @Component({
   selector: 'app-admin-login',
   standalone: true,
-  imports: [CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './admin-login.component.html',
   styleUrls: ['./admin-login.component.css']
 })
@@ -16,17 +17,21 @@ export class AdminLoginComponent {
     email: "admin@medibooks.com",
     password: "admin123"
   };
+
+  email: string = "";
+  password: string = "";
   
   constructor(private router: Router) {}
   
   handleLogin(event: Event) {
     event.preventDefault();
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const password = (document.getElementById("password") as HTMLInputElement).value;
 
-    if (email === this.adminCredentials.email && password === this.adminCredentials.password) {
+    console.log('Email:', this.email);  // Debugging email
+    console.log('Password:', this.password);  // Debugging password
+    
+    if (this.email === this.adminCredentials.email && this.password === this.adminCredentials.password) {
       alert("Login successful!");
-      window.location.href = "admin-dashboard.html";  // You can replace this with routing for SPA
+      this.router.navigate(['/admin-dashboard']); // ✅ Corrected navigation
     } else {
       alert("Invalid email or password. Please try again.");
     }
