@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router'; // Added this for routerLink support
 import { CommonModule } from '@angular/common'; 
 
@@ -15,12 +16,12 @@ export class AdminDashboardComponent {
   totalUsers: number = 350;
   totalDoctors: number = 45;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   logout(): void {
-    // In a real app, you'd likely call an authentication service here
     console.log('Logout button clicked');
     alert('You have logged out!');
-    window.location.href = 'login.html'; 
+    this.router.navigate(['/login']); // Navigate to login page instead of reloading
   }
+  
 }
