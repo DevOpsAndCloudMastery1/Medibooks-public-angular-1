@@ -1,9 +1,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <!-- Use routerLink later if using Angular Router -->
-        <a class="navbar-brand d-flex align-items-center" href="#"> <!-- Changed href for now -->
-            <img src="images/MediBooks-Logo-1.png" alt="MediBooks Logo">
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+            <img src="/ng-learning/projectadmin-1/src/images/MediBooks-Logo-1.png" alt="MediBooks Logo">
             <span>MediBooks</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,14 +10,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto d-flex flex-row">
-                <!-- Use routerLinkActive and routerLink later -->
-                <li class="nav-item px-2"><a class="nav-link active" href="#">Dashboard</a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="#">Appointments</a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="#">Doctors</a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="#">Users</a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="#">Reports</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/appointments" routerLinkActive="active">Appointments</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/doctors" routerLinkActive="active">Doctors</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/reports" routerLinkActive="active">Reports</a></li>
                 <li class="nav-item px-2">
-                    <button (click)="logout()" class="btn btn-logout">Logout</button> <!-- Angular Click Binding -->
+                    <button (click)="logout()" class="btn btn-logout">Logout</button>
                 </li>
             </ul>
         </div>
@@ -32,19 +30,15 @@
     <div class="overview-cards">
         <div class="card">
             <h3>Total Appointments</h3>
-            <!-- Consider binding these to component properties later -->
-            <p id="appointments">120</p>
+            <p id="appointments">{{ totalAppointments }}</p>
         </div>
         <div class="card">
             <h3>Total Users</h3>
-            <p id="users">350</p>
+            <p id="users">{{ totalUsers }}</p>
         </div>
         <div class="card">
             <h3>Total Doctors</h3>
-            <p id="doctors">45</p>
+            <p id="doctors">{{ totalDoctors }}</p>
         </div>
     </div>
 </div>
-
-<!-- Footer would go here if you had one in the original -->
-<!-- <footer > ... </footer> -->
