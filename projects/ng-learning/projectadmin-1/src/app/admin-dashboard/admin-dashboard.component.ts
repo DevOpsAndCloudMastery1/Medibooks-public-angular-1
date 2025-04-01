@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router'; // Added this for routerLink support
 import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'
 })
@@ -20,6 +21,6 @@ export class AdminDashboardComponent {
     // In a real app, you'd likely call an authentication service here
     console.log('Logout button clicked');
     alert('You have logged out!');
-    window.location.href = 'login.html'; // Or preferably navigate using Angular Router
+    window.location.href = 'login.html'; 
   }
 }
