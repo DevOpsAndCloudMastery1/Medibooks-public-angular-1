@@ -1,1 +1,50 @@
-<p>admin-dashboard works!</p>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <!-- Use routerLink later if using Angular Router -->
+        <a class="navbar-brand d-flex align-items-center" href="#"> <!-- Changed href for now -->
+            <img src="images/MediBooks-Logo-1.png" alt="MediBooks Logo">
+            <span>MediBooks</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+                <!-- Use routerLinkActive and routerLink later -->
+                <li class="nav-item px-2"><a class="nav-link active" href="#">Dashboard</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="#">Appointments</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="#">Doctors</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="#">Users</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="#">Reports</a></li>
+                <li class="nav-item px-2">
+                    <button (click)="logout()" class="btn btn-logout">Logout</button> <!-- Angular Click Binding -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="content">
+    <h1>Admin Dashboard</h1>
+    <p>Manage your healthcare system efficiently.</p>
+    <div class="overview-cards">
+        <div class="card">
+            <h3>Total Appointments</h3>
+            <!-- Consider binding these to component properties later -->
+            <p id="appointments">120</p>
+        </div>
+        <div class="card">
+            <h3>Total Users</h3>
+            <p id="users">350</p>
+        </div>
+        <div class="card">
+            <h3>Total Doctors</h3>
+            <p id="doctors">45</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer would go here if you had one in the original -->
+<!-- <footer > ... </footer> -->
