@@ -1,0 +1,74 @@
+/* Centering the login container */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    margin: 0;
+  }
+  
+  .admin-login-container {
+    width: 400px;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Logo Styling - Round shape */
+  .admin-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-login-container h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    font-size: 1rem;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #34495e, #2c3e50);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #2c3e50, #34495e);
+  }
+  
+  .forgot-password {
+    color: #2c3e50;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .forgot-password:hover {
+    color: #f39c12;
+  }
+  
