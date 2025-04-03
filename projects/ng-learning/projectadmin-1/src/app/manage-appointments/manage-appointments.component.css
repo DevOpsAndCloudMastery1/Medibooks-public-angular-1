@@ -1,0 +1,73 @@
+.main-content {
+    padding: 40px;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters label {
+    margin-right: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #dee2e6;
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  .status {
+    font-weight: bold;
+  }
+  
+  .approve-btn,
+  .reschedule-btn,
+  .cancel-btn {
+    background-color: #f1f1f1;
+    padding: 8px 16px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .approve-btn:hover,
+  .reschedule-btn:hover,
+  .cancel-btn:hover {
+    background-color: #e6e6e6;
+  }
+  
+  #reschedule-modal {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 400px;
+  }
+  
+  #reschedule-modal input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
