@@ -1,1 +1,61 @@
-<p>manage-appointments works!</p>
+<div class="main-content">
+    <h1>Manage Appointments</h1>
+  
+    <div class="filters">
+      <label for="doctor-filter">Filter by Doctor:</label>
+      <select id="doctor-filter" [(ngModel)]="doctorFilter" (change)="filterAppointments()">
+        <option value="All">All Doctors</option>
+        <option value="Dr. John Smith">Dr. John Smith</option>
+        <option value="Dr. Emma Davis">Dr. Emma Davis</option>
+      </select>
+  
+      <label for="status-filter">Filter by Status:</label>
+      <select id="status-filter" [(ngModel)]="statusFilter" (change)="filterAppointments()">
+        <option value="All">All Statuses</option>
+        <option value="Approved">Approved</option>
+        <option value="Pending">Pending</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+    </div>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Doctor Name</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of filterAppointments()">
+          <td>{{ appointment.patient }}</td>
+          <td>{{ appointment.doctor }}</td>
+          <td>{{ appointment.date }}</td>
+          <td class="status">{{ appointment.status }}</td>
+          <td>
+            <button class="approve-btn" (click)="approveAppointment(appointment)">Approve</button>
+            <button class="reschedule-btn" (click)="openRescheduleModal(appointment)">Reschedule</button>
+            <button class="cancel-btn" (click)="cancelAppointment(appointment)">Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Reschedule Modal -->
+  <div *ngIf="showModal" id="reschedule-modal">
+    <h2>Reschedule Appointment</h2>
+    <label for="new-date">Select New Date:</label>
+    <input type="date" id="new-date" [(ngModel)]="newDate">
+    
+    <label for="new-time">Select New Time:</label>
+    <input type="time" id="new-time" [(ngModel)]="newTime">
+  
+    <div class="d-flex justify-content-between">
+      <button (click)="confirmReschedule()">Confirm</button>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+  
