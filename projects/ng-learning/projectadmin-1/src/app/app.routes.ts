@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { ManageDoctorsComponent } from './manage-doctors/manage-doctors.component';
 import { ManageAppointmentsComponent } from './manage-appointments/manage-appointments.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { AdminReportsComponent } from './admin-reports/admin-reports.component';
 
 export const routes: Routes = [
    { path: 'login', component: AdminLoginComponent },
@@ -11,5 +12,6 @@ export const routes: Routes = [
    { path: 'manage-doctors', component: ManageDoctorsComponent },
    { path: 'manage-appointments', component: ManageAppointmentsComponent },
    { path: 'manage-users', component: ManageUsersComponent },
+   { path: 'admin-reports', component: AdminReportsComponent },
    { path: '', redirectTo: '/login', pathMatch: 'full' },
    ];
