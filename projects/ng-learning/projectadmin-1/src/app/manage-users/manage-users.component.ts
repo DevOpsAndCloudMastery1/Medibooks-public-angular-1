@@ -30,8 +30,12 @@ export class ManageUsersComponent {
   }
 
   toggleAccountStatus(index: number) {
-    const user = this.filteredUsers[index];
-    user.status = user.status === "Active" ? "Inactive" : "Active";
-    alert(`${user.name}'s account has been ${user.status.toLowerCase()}d.`);
-  }
+    const filteredUser = this.filteredUsers[index];
+    const user = this.users.find(u => u.email === filteredUser.email); // ✅ Find the user in the original array
+
+    if (user) {
+      user.status = user.status === "Active" ? "Inactive" : "Active";
+      alert(`${user.name}'s account has been ${user.status.toLowerCase()}d.`);
+    }
+  } 
 }
