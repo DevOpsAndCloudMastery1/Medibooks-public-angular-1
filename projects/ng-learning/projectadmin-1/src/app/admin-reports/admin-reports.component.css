@@ -1,0 +1,51 @@
+.admin-container {
+    padding: 20px;
+  }
+  
+  .admin-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .admin-main {
+    margin-top: 30px;
+  }
+  
+  .report-section,
+  .report-details,
+  .chart-section,
+  .export-section {
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 10px;
+  }
+  
+  .card h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .card p {
+    font-size: 16px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .btn {
+    margin-right: 10px;
+  }
+  
