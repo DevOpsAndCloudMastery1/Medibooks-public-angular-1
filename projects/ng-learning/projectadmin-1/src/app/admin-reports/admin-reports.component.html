@@ -1,1 +1,110 @@
-<p>admin-reports works!</p>
+<div class="admin-container">
+    <header class="admin-header">
+      <h1>Admin Panel - Reports</h1>
+    </header>
+  
+    <main class="admin-main">
+      <!-- Filter Section -->
+      <section class="filter-section">
+        <h2>Filter Reports</h2>
+        <!-- Use ngSubmit if you want form semantics, otherwise (click) is fine -->
+        <form #filterForm="ngForm">
+          <label for="start-date">Start Date:</label>
+          <input type="date" id="start-date" name="startDate" [(ngModel)]="startDate">
+  
+          <label for="end-date">End Date:</label>
+          <input type="date" id="end-date" name="endDate" [(ngModel)]="endDate">
+  
+          <label for="doctor">Doctor:</label>
+          <select id="doctor" name="selectedDoctor" [(ngModel)]="selectedDoctor">
+            <option value="">All Doctors</option> <!-- Add an 'All' option -->
+            <option value="Dr. John Smith">Dr. John Smith - Cardiologist</option>
+            <option value="Dr. Emma Davis">Dr. Emma Davis - Neurologist</option>
+            <option value="Dr. Michael Brown">Dr. Michael Brown - Pediatrician</option>
+            <option value="Dr. Olivia Wilson">Dr. Olivia Wilson - Orthopedic Surgeon</option>
+            <option value="Dr. Liam Johnson">Dr. Liam Johnson - Dermatologist</option>
+            <option value="Dr. Sophia Martinez">Dr. Sophia Martinez - Gynecologist</option>
+          </select>
+  
+          <label for="specialization">Specialization:</label>
+          <select id="specialization" name="selectedSpecialization" [(ngModel)]="selectedSpecialization">
+            <option value="">All Specializations</option> <!-- Add an 'All' option -->
+            <option value="Cardiology">Cardiology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Gynecology">Gynecology</option>
+          </select>
+  
+          <!-- Use (click) to trigger filtering method -->
+          <button type="button" (click)="applyFilters()" class="btn btn-primary">Apply Filter</button>
+        </form>
+      </section>
+  
+      <!-- Overview Report Cards -->
+      <section class="report-section">
+        <h2>Overview</h2>
+        <div class="report-cards">
+          <div class="card">
+            <h3>Total Appointments</h3>
+            <!-- Use interpolation to display component data -->
+            <p>{{ totalAppointments }}</p>
+          </div>
+          <div class="card">
+            <h3>Active Users</h3>
+            <p>{{ activeUsers }}</p>
+          </div>
+          <div class="card">
+            <h3>Active Doctors</h3>
+            <p>{{ activeDoctors }}</p>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Doctor Report Table -->
+      <section class="report-details">
+        <h2>Doctor-Specific Reports</h2>
+        <table id="doctor-report-table" class="table table-bordered table-striped"> <!-- Added table-striped for better readability -->
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Doctor</th>
+              <th>Specialization</th>
+              <th>Appointments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Use *ngFor to loop through filtered data -->
+            <tr *ngFor="let report of filteredDoctorReports">
+              <td>{{ report.date }}</td>
+              <td>{{ report.doctor }}</td>
+              <td>{{ report.specialization }}</td>
+              <td>{{ report.appointments }}</td>
+            </tr>
+            <!-- Add a message if no reports match the filter -->
+            <tr *ngIf="filteredDoctorReports.length === 0">
+              <td colspan="4" class="text-center">No reports found matching the criteria.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+  
+      <!-- Charts Section -->
+      <section class="chart-section">
+        <h2>Appointments Over Time</h2>
+        <div class="chart-container">
+          <!-- Add template reference variable #appointmentsChartCanvas -->
+          <canvas #appointmentsChartCanvas id="appointmentsChart"></canvas>
+        </div>
+      </section>
+  
+      <!-- Export Section -->
+      <section class="export-section">
+        <h2>Export Data</h2>
+        <!-- Use (click) to trigger export methods -->
+        <button (click)="exportToCsv()" class="btn btn-success">Export to CSV</button>
+        <button (click)="exportToExcel()" class="btn btn-success">Export to Excel</button>
+      </section>
+    </main>
+    </div>
