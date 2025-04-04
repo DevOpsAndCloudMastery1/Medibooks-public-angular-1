@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { Chart, registerables } from 'chart.js/auto';
 import { saveAs } from 'file-saver';
-import * as ExcelJS from 'exceljs';  // Ensure correct import of ExcelJS
+import * as ExcelJS from 'exceljs';
 
 Chart.register(...registerables);
 
@@ -29,7 +29,6 @@ interface DoctorReport {
 })
 export class AdminReportsComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  // --- State Properties ---
   startDate: string = '';
   endDate: string = '';
   selectedDoctor: string = '';
@@ -49,7 +48,6 @@ export class AdminReportsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('appointmentsChartCanvas') appointmentsChartCanvas!: ElementRef<HTMLCanvasElement>;
   appointmentsChart: Chart | null = null;
 
-  // --- Lifecycle Hooks ---
   constructor() {}
 
   ngOnInit(): void {
@@ -67,12 +65,14 @@ export class AdminReportsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.appointmentsChart?.destroy();
   }
 
-  // --- Component Methods ---
   applyFilters(): void {
     this.filteredDoctorReports = this.allDoctorReports.filter(report => {
       const reportDate = new Date(report.date);
       const filterStartDate = this.startDate ? new Date(this.startDate) : null;
       const filterEndDate = this.endDate ? new Date(this.endDate) : null;
+       if (filterEndDate) {
+          filterEndDate.setHours(23, 59, 59, 999);
+      }
 
       const isWithinDate =
         (!filterStartDate || reportDate >= filterStartDate) &&
@@ -88,43 +88,102 @@ export class AdminReportsComponent implements OnInit, AfterViewInit, OnDestroy {
   renderAppointmentsChart(): void {
      if (this.appointmentsChart) {
       this.appointmentsChart.destroy();
+      this.appointmentsChart = null;
     }
-    if (this.appointmentsChartCanvas) {
+    if (this.appointmentsChartCanvas?.nativeElement) {
       const ctx = this.appointmentsChartCanvas.nativeElement.getContext('2d');
       if (ctx) {
         const chartLabels = ['January', 'February', 'March', 'April', 'May', 'June'];
         const chartDataPoints = [10, 20, 30, 40, 50, 60];
         this.appointmentsChart = new Chart(ctx, {
           type: 'line',
-          data: { labels: chartLabels, datasets: [{ label: 'Appointments Over Time', data: chartDataPoints, backgroundColor: 'rgba(54, 162, 235, 0.2)', borderColor: 'rgba(54, 162, 235, 1)', borderWidth: 1, tension: 0.1 }] },
-          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true }, tooltip: { enabled: true } }, scales: { x: { title: { display: true, text: 'Months' } }, y: { title: { display: true, text: 'Number of Appointments' }, beginAtZero: true } } }
+          data: {
+              labels: chartLabels,
+              datasets: [{
+                  label: 'Appointments Over Time',
+                  data: chartDataPoints,
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 1,
+                  tension: 0.1,
+                  fill: true
+                 }]
+            },
+          options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                  legend: { display: true },
+                  tooltip: { enabled: true }
+                },
+              scales: {
+                  x: {
+                      title: { display: true, text: 'Months' }
+                    },
+                  y: {
+                      title: { display: true, text: 'Number of Appointments' },
+                      beginAtZero: true
+                    }
+                }
+            }
         });
       } else { console.error('Failed to get 2D context'); }
     } else { console.error('Canvas element not found.'); }
   }
 
   exportToCsv(): void {
+     if (this.filteredDoctorReports.length === 0) {
+      alert('No data to export.');
+      return;
+    }
     const header = ['Date', 'Doctor', 'Specialization', 'Appointments'];
-    const rows = this.filteredDoctorReports.map(report => [report.date, report.doctor, report.specialization, report.appointments]);
+    const rows = this.filteredDoctorReports.map(report =>
+      [
+        report.date,
+        `"${report.doctor.replace(/"/g, '""')}"`,
+        report.specialization,
+        report.appointments
+      ]
+    );
     const csvContent = [ header.join(','), ...rows.map(row => row.join(',')) ].join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
     saveAs(blob, 'doctor_report.csv');
   }
 
   async exportToExcel(): Promise<void> {
+     if (this.filteredDoctorReports.length === 0) {
+      alert('No data to export.');
+      return;
+    }
     try {
       const workbook = new ExcelJS.Workbook();
       const worksheet = workbook.addWorksheet('Doctor Report');
 
       worksheet.columns = [
         { header: 'Date', key: 'date', width: 15 },
-        { header: 'Doctor', key: 'doctor', width: 30 },
+        { header: 'Doctor', key: 'doctor', width: 35 },
         { header: 'Specialization', key: 'specialization', width: 20 },
-        { header: 'Appointments', key: 'appointments', width: 15 }
+        { header: 'Appointments', key: 'appointments', width: 15, style: { numFmt: '0', alignment: { horizontal: 'right' } } }
       ];
 
+       worksheet.getRow(1).font = { bold: true };
+       worksheet.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
+       worksheet.getRow(1).fill = {
+          type: 'pattern',
+          pattern: 'solid',
+          fgColor: { argb: 'FFD3D3D3' }
+        };
+        worksheet.getRow(1).border = {
+          bottom: { style: 'thin' }
+        };
+
       this.filteredDoctorReports.forEach(report => {
-        worksheet.addRow(report); // Can add the whole object if keys match column keys
+        worksheet.addRow({
+            date: report.date,
+            doctor: report.doctor,
+            specialization: report.specialization,
+            appointments: report.appointments
+        });
       });
 
       const buffer = await workbook.xlsx.writeBuffer();
@@ -132,6 +191,11 @@ export class AdminReportsComponent implements OnInit, AfterViewInit, OnDestroy {
       saveAs(blob, 'doctor_report.xlsx');
     } catch (error) {
       console.error("Error during Excel export:", error);
+      alert('An error occurred while exporting to Excel. Please check the console for details.');
     }
+  }
+
+  getYear(): number {
+    return new Date().getFullYear();
   }
 }
