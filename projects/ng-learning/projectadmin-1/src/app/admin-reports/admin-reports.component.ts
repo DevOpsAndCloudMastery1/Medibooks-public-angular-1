@@ -7,6 +7,8 @@ import { Chart, registerables } from 'chart.js/auto';
 import { saveAs } from 'file-saver';
 import * as ExcelJS from 'exceljs';  // Ensure correct import of ExcelJS
 
+Chart.register(...registerables);
+
 interface DoctorReport {
   date: string;
   doctor: string;
