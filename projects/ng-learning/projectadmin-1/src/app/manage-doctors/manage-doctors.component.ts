@@ -32,6 +32,7 @@ export class ManageDoctorsComponent {
   constructor(private router: Router) {}
 
   onFileSelected(event: Event): void {
+    console.log('onFileSelected event triggered');
     const element = event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
 
@@ -40,11 +41,13 @@ export class ManageDoctorsComponent {
       console.log('File selected:', this.photo); // For debugging
     } else {
       this.photo = null;
+      console.log('No file selected or file list empty');
     }
   }
 
   // Function to add a doctor
   addDoctor(event: Event) {
+    console.log('addDoctor function called'); 
     event.preventDefault(); // Prevent form submission
 
     if (this.doctorName && this.specialization && this.experience && this.availability && this.photo) {
