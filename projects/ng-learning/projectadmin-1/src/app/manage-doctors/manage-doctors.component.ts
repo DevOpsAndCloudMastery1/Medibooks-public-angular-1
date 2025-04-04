@@ -31,6 +31,18 @@ export class ManageDoctorsComponent {
 
   constructor(private router: Router) {}
 
+  onFileSelected(event: Event): void {
+    const element = event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+
+    if (fileList && fileList.length > 0) {
+      this.photo = fileList[0]; // Assign the selected File object to the component property
+      console.log('File selected:', this.photo); // For debugging
+    } else {
+      this.photo = null;
+    }
+  }
+
   // Function to add a doctor
   addDoctor(event: Event) {
     event.preventDefault(); // Prevent form submission
