@@ -55,18 +55,25 @@
     </div>
 
     <!-- Forgot Password Popup (Initially Hidden) -->
-    <div id="forgotPasswordPopup" class="form-card" *ngIf="showForgotPasswordFlag" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 400px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <h2 class="form-title">Reset Password</h2>
-        <form #forgotPasswordForm="ngForm">
-            <div class="mb-3">
-                <label for="forgotEmail" class="form-label">Email</label>
-                <input type="email" id="forgotEmail" name="forgotEmail" class="form-control" placeholder="Enter your email" required [(ngModel)]="forgotEmail">
-            </div>
-            <button type="button" class="btn btn-primary w-100" (click)="resetPassword()">Reset Password</button>
-            <div class="form-links">
-                <a href="javascript:void(0);" (click)="closeForgotPasswordPopup()">Cancel</a>
-            </div>
-        </form>
-    </div>
-
+    <div id="forgotPasswordPopup" class="form-card" *ngIf="showForgotPasswordFlag" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <h2 class="form-title">Reset Password</h2>
+      <form #forgotPasswordForm="ngForm" (ngSubmit)="resetPassword()">
+         <div class="mb-3">
+          <label for="forgotEmail" class="form-label">Email</label>
+          <input type="email" id="forgotEmail" name="forgotEmail" class="form-control" placeholder="Enter your email" [(ngModel)]="forgotEmail" required>
+         </div>
+         <div class="mb-3">
+          <label for="newPassword" class="form-label">New Password</label>
+          <input type="password" id="newPassword" name="newPassword" class="form-control" placeholder="Enter new password" [(ngModel)]="newPassword" required>
+         </div>
+        <div class="mb-3">
+          <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+          <input type="password" id="confirmNewPassword" name="confirmNewPassword" class="form-control" placeholder="Confirm new password" [(ngModel)]="confirmNewPassword" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Reset Password</button>
+        <div class="form-links">
+         <a href="javascript:void(0);" (click)="closeForgotPasswordPopup()">Cancel</a>
+        </div>
+    </form>
+  </div>
 </div>
