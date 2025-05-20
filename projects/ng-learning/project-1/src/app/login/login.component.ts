@@ -24,6 +24,8 @@ export class LoginComponent {
   signUpPassword = '';
   confirmPassword = '';
   forgotEmail = '';
+  newPassword = ''; // Added for reset password
+  confirmNewPassword = ''; // Added for reset password
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -44,16 +46,39 @@ export class LoginComponent {
 
   closeForgotPasswordPopup() {
     this.showForgotPasswordFlag = false;
+    this.forgotEmail = '';
+    this.newPassword = ''; // Clear new password
+    this.confirmNewPassword = ''; // Clear confirm new password
   }
 
-  // Reset Password (Temporary Alert for Demo)
+  // Reset Password
   resetPassword() {
     if (this.forgotEmail.trim() === "") {
       alert("Please enter your email.");
-    } else {
-      alert("Password has been updated.");
-      this.closeForgotPasswordPopup();
+      return;
     }
+    if (this.newPassword.trim() === "") {
+      alert("Please enter a new password.");
+      return;
+    }
+    if (this.newPassword !== this.confirmNewPassword) {
+      alert("New password and confirm password must match.");
+      return;
+    }
+    const payload = {
+      email: this.forgotEmail,
+      newPassword: this.newPassword
+    };
+    this.http.post<any>('http://192.168.0.63:3000/api/auth/reset-password', payload).subscribe({
+      next: () => {
+        alert("Password has been updated successfully.");
+        this.closeForgotPasswordPopup();
+      },
+      error: (err) => {
+        console.error('Reset password error:', err);
+        alert('Failed to reset password: ' + JSON.stringify(err.error));
+      }
+    });
   }
 
   // Validate Login Function
