@@ -47,8 +47,8 @@ describe('DoctorSearchComponent', () => {
 
   it('should filter doctors based on search term', () => {
     component.doctors = [
-      { id: 1, name: 'Dr. John Smith', specialization: 'Cardiologist', img: 'images/doctor1.jpg' },
-      { id: 2, name: 'Dr. Emma Davis', specialization: 'Neurologist', img: 'images/doctor2.jpg' }
+      { id: 1, name: 'Dr. John Smith', specialization: 'Cardiologist', img: 'assets/images/doctor1.jpg' },
+      { id: 2, name: 'Dr. Emma Davis', specialization: 'Neurologist', img: 'assets/images/doctor2.jpg' }
     ];
     
     component.searchTerm = 'John'; // Ensuring a valid match
