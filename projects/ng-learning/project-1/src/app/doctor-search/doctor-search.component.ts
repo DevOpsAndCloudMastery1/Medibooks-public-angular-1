@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -21,19 +21,25 @@ interface Doctor {
 export class DoctorSearchComponent implements OnInit {
   doctors: Doctor[] = [];
   filteredDoctors: Doctor[] = [];
-  SearchTerm: string = '';
+  private _searchTerm: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<{ doctors: Doctor[] }>('data/doctors.json')
-      .subscribe(data => {
-        this.doctors = data.doctors;
-        this.filteredDoctors = [...this.doctors]; 
+    // Updated to fetch doctors from backend
+    this.http.get<{ doctors: Doctor[] }>('http://localhost:3000/api/doctors')
+      .subscribe({
+        next: (data) => {
+          this.doctors = data.doctors;
+          this.filteredDoctors = [...this.doctors];
+        },
+        error: (err) => {
+          console.error('Error loading doctors:', err);
+        }
       });
   }
 
-  // Use a getter to filter the doctors based on the search term
+  // Getter and setter for search term
   get searchTerm(): string {
     return this._searchTerm;
   }
@@ -43,8 +49,7 @@ export class DoctorSearchComponent implements OnInit {
     this.filterDoctors();
   }
 
-  private _searchTerm: string = '';
-
+  // Filter doctors based on search term
   filterDoctors(): void {
     const filter = this.searchTerm.toLowerCase();
     this.filteredDoctors = this.doctors.filter(doctor =>
@@ -53,4 +58,3 @@ export class DoctorSearchComponent implements OnInit {
     );
   }
 }
-
