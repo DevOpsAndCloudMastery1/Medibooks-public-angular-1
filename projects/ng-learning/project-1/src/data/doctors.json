@@ -3,7 +3,7 @@
         {
             "id": "1",
             "name": "Dr. John Smith",
-            "img": "doctor1.jpg",
+            "img": "assets/images/doctor1.jpg",
             "specialization": "Cardiologist",
             "experience": "15 years",
             "location": "MediHealth Hospital, New York",
@@ -12,7 +12,7 @@
         {
             "id": "2",
             "name": "Dr. Emma Davis",
-            "img": "doctor2.jpg",
+            "img": "assets/images/doctor2.jpg",
             "specialization": "Neurologist",
             "experience": "10 years",
             "location": "NeuroCare Clinic, Chicago",
@@ -21,7 +21,7 @@
         {
             "id": "3",
             "name": "Dr. Michael Brown",
-            "img": "doctor3.jpg",
+            "img": "assets/images/doctor3.jpg",
             "specialization": "Pediatrician",
             "experience": "8 years",
             "location": "Happy Kids Pediatrics, Los Angeles",
@@ -30,7 +30,7 @@
         {
             "id": "4",
             "name": "Dr. Olivia Wilson",
-            "img": "doctor4.jpg",
+            "img": "assets/images/doctor4.jpg",
             "specialization": "Orthopedic Surgeon",
             "experience": "12 years",
             "location": "Advanced Orthopedic Center, San Francisco",
@@ -39,7 +39,7 @@
         {
             "id": "5",
             "name": "Dr. Liam Johnson",
-            "img": "doctor5.jpg",
+            "img": "assets/images/doctor5.jpg",
             "specialization": "Dermatologist",
             "experience": "9 years",
             "location": "SkinCare Specialists, Miami",
@@ -48,7 +48,7 @@
         {
             "id": "6",
             "name": "Dr. Sophia Martinez",
-            "img": "doctor6.jpg",
+            "img": "assets/images/doctor6.jpg",
             "specialization": "Gynecologist",
             "experience": "14 years",
             "location": "Women’s Wellness Center, Houston",
