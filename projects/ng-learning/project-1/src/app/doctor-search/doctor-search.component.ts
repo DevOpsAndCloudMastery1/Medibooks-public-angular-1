@@ -27,7 +27,7 @@ export class DoctorSearchComponent implements OnInit {
 
   ngOnInit(): void {
     // Updated to fetch doctors from backend
-    this.http.get<{ doctors: Doctor[] }>('http://localhost:3000/api/doctors')
+    this.http.get<{ doctors: Doctor[] }>('http://192.168.0.63:3000/api/doctors')
       .subscribe({
         next: (data) => {
           this.doctors = data.doctors;
