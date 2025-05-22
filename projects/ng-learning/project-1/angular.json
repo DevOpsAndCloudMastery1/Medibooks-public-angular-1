@@ -21,9 +21,8 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-                "src/data",
-                "src/assets"
-                
+              "src/data",
+              "src/assets"
             ],
             "styles": [
               "src/styles/medibooks-styles.css",
@@ -34,7 +33,6 @@
               "src/js/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -91,8 +89,8 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-                 "src/data",
-                 
+              "src/data",
+              "src/assets"
             ],
             "styles": [
               "src/styles/medibooks-styles.css",
@@ -103,49 +101,49 @@
               "src/js/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"
             ]
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/project-1-server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "development": {
+              "outputHashing": "media",
+              "sourceMap": true,
+              "optimization": false
+            },
+            "production": {
+              "outputHashing": "media",
+              "sourceMap": false,
+              "optimization": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "project-1:build:development",
+              "serverTarget": "project-1:server:development"
+            },
+            "production": {
+              "browserTarget": "project-1:build:production",
+              "serverTarget": "project-1:server:production"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "host": "0.0.0.0",
+            "port": 4000,
+            "timeout": 120000
+          }
         }
       }
     }
-  },
-  "serve-ssr": {
-    "builder": "@nguniversal/builders:ssr-dev-server",
-    "configurations": {
-      "development": {
-        "browserTarget": "project-1:build:development",
-        "serverTarget": "project-1:server:development"
-      },
-      "production": {
-        "browserTarget": "project-1:build:production",
-        "serverTarget": "project-1:server:production"
-      }
-    },
-    "defaultConfiguration": "development",
-    "options": {
-      "host": "0.0.0.0",
-      "port": 4200,
-      "timeout": 120000
-    }
-  },
-  "server": {
-    "builder": "@angular-devkit/build-angular:server",
-    "options": {
-      "outputPath": "dist/project-1-server",
-      "main": "src/main.server.ts",
-      "tsConfig": "tsconfig.server.json"
-    },
-    "configurations": {
-      "development": {
-        "outputHashing": "media",
-        "sourceMap": true,
-        "optimization": false
-      },
-      "production": {
-        "outputHashing": "media",
-        "sourceMap": false,
-        "optimization": true
-      }
-    },
-    "defaultConfiguration": "production"
   },
   "cli": {
     "analytics": false
