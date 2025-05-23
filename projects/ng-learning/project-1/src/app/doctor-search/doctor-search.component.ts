@@ -5,18 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 interface Doctor {
-  id: number;
+  id: string; // Changed to string to match API
   name: string;
-  specialization: string;
+  specialization: string; // Removed duplicate
   img: string;
-}
+  experience: string;
+  }
 
 @Component({
   selector: 'app-doctor-search',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './doctor-search.component.html',
-  styleUrl: './doctor-search.component.css'
+  styleUrls: ['./doctor-search.component.css'] // Changed to styleUrls
 })
 export class DoctorSearchComponent implements OnInit {
   doctors: Doctor[] = [];
@@ -26,15 +27,19 @@ export class DoctorSearchComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Updated to fetch doctors from backend
-    this.http.get<{ doctors: Doctor[] }>('http://192.168.0.63:3000/api/doctors')
+    // Fetch doctors from backend
+    this.http.get<{ doctors: Doctor[] }[]>('http://192.168.0.63:3000/api/doctors')
       .subscribe({
         next: (data) => {
-          this.doctors = data.doctors;
+          console.log('API Response:', data); // Debug
+          this.doctors = Array.isArray(data[0]?.doctors) ? data[0].doctors : [];
+          console.log('Assigned doctors:', this.doctors); // Debug
           this.filteredDoctors = [...this.doctors];
         },
         error: (err) => {
           console.error('Error loading doctors:', err);
+          this.doctors = [];
+          this.filteredDoctors = [];
         }
       });
   }
@@ -47,6 +52,11 @@ export class DoctorSearchComponent implements OnInit {
   set searchTerm(value: string) {
     this._searchTerm = value;
     this.filterDoctors();
+  }
+
+  // Normalize image paths
+  getImagePath(img: string): string {
+    return img.replace(/^(assets|assests)\/images\//, '');
   }
 
   // Filter doctors based on search term
