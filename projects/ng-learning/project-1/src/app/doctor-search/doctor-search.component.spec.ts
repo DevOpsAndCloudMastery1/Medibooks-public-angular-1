@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { DoctorSearchComponent } from './doctor-search.component';
 
@@ -12,8 +12,7 @@ describe('DoctorSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, FormsModule, RouterModule, HttpClientTestingModule,DoctorSearchComponent],
-      providers: []
+      imports: [CommonModule, FormsModule, RouterTestingModule, HttpClientTestingModule,DoctorSearchComponent],
     }).compileComponents();
   });
 
