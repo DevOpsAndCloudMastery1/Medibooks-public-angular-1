@@ -27,17 +27,22 @@ export class DoctorDetailsComponent  implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.doctorId = params['id'];
+  this.route.params.subscribe(params => {
+    this.doctorId = params['id'];
 
-      if (this.doctorId) {
-        this.http.get<{ doctors: Doctor[] }>('data/doctors.json')
-          .subscribe(data => {
-            this.doctor = data.doctors.find(doc => doc.id === this.doctorId);
-            console.log('Fetched doctor:', this.doctor);
-          });
-      }
-    });
-  }
+    if (this.doctorId) {
+      // Call backend API to get a single doctor by id
+      this.http.get<Doctor>(`/api/doctors/${this.doctorId}`)
+        .subscribe(doctor => {
+          this.doctor = doctor;
+          console.log('Fetched doctor:', this.doctor);
+        }, error => {
+          console.error('Error fetching doctor details:', error);
+          this.doctor = undefined;  // clear doctor if error
+        });
+    }
+  });
+}
+
 
 }
