@@ -18,31 +18,30 @@ interface Doctor {
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './doctor-details.component.html',
-  styleUrl: './doctor-details.component.css'
+  styleUrls: ['./doctor-details.component.css']   // corrected here
 })
-export class DoctorDetailsComponent  implements OnInit {
+export class DoctorDetailsComponent implements OnInit {
   doctorId: string | null = null;
   doctor: Doctor | undefined;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
-  this.route.params.subscribe(params => {
-    this.doctorId = params['id'];
+    this.route.params.subscribe(params => {
+      this.doctorId = params['id'];
 
-    if (this.doctorId) {
-      // Call backend API to get a single doctor by id
-      this.http.get<Doctor>(`/api/doctors/${this.doctorId}`)
-        .subscribe(doctor => {
-          this.doctor = doctor;
-          console.log('Fetched doctor:', this.doctor);
-        }, error => {
-          console.error('Error fetching doctor details:', error);
-          this.doctor = undefined;  // clear doctor if error
+      if (this.doctorId) {
+        // Call backend API to get a single doctor by id
+        this.http.get<Doctor>(`http://192.168.0.63:3000/api/doctors/${this.doctorId}`).subscribe({
+          next: doctor => {
+            this.doctor = doctor;
+            console.log('Fetched doctor from backend:', doctor);
+          },
+          error: err => {
+            console.error('Error fetching doctor:', err);
+          }
         });
-    }
-  });
-}
-
-
+      }
+    });
+  }
 }
