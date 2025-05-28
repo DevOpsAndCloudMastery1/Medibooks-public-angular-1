@@ -1,1 +1,8 @@
-<p>add-doctor works!</p>
+<form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+  <label>Name: <input formControlName="name" /></label><br />
+  <label>Specialization: <input formControlName="specialization" /></label><br />
+  <label>Location: <input formControlName="location" /></label><br />
+  <label>Experience: <input formControlName="experience" /></label><br />
+  <label>Rating: <input formControlName="rating" /></label><br />
+  <button type="submit">Add Doctor</button>
+</form>
