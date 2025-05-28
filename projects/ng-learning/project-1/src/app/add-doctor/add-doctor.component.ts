@@ -1,35 +1,63 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { DoctorService } from '../services/doctor.service';
+import { RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+interface Doctor {
+  name: string;
+  img: string;
+  specialization: string;
+  experience: string;
+  location: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-add-doctor',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule],
   templateUrl: './add-doctor.component.html',
-  styleUrls: ['./add-doctor.component.css']
+  styleUrl: './add-doctor.component.css'
 })
 export class AddDoctorComponent {
-  doctorForm: FormGroup;
+  newDoctor: Doctor = {
+    name: '',
+    img: '',
+    specialization: '',
+    experience: '',
+    location: '',
+    description: ''
+  };
 
-  constructor(private fb: FormBuilder, private doctorService: DoctorService) {
-    this.doctorForm = this.fb.group({
-      name: ['', Validators.required],
-      specialization: ['', Validators.required],
-      location: ['', Validators.required],
-      experience: [0, [Validators.required, Validators.min(0)]],
-      rating: [0, [Validators.required, Validators.min(0), Validators.max(5)]]
-    });
-  }
+  submitted = false;
 
-  onSubmit() {
-    if (this.doctorForm.valid) {
-      this.doctorService.addDoctor(this.doctorForm.value).subscribe(response => {
-        alert('Doctor added successfully!');
-        this.doctorForm.reset();
-      });
+  constructor(private http: HttpClient) {}
+
+  addDoctor(): void {
+    if (!this.newDoctor.name || !this.newDoctor.specialization) {
+      alert('Name and Specialization are required.');
+      return;
     }
+
+    this.http.post<Doctor>('http://localhost:3000/api/doctors', this.newDoctor)
+      .subscribe({
+        next: (response) => {
+          console.log('Doctor added successfully:', response);
+          this.submitted = true;
+          this.newDoctor = {
+            name: '',
+            img: '',
+            specialization: '',
+            experience: '',
+            location: '',
+            description: ''
+          };
+        },
+        error: (err) => {
+          console.error('Error adding doctor:', err);
+          alert('Failed to add doctor.');
+        }
+      });
   }
 }
