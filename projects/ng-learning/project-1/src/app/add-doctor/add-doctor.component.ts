@@ -31,33 +31,28 @@ export class AddDoctorComponent {
   };
 
   submitted = false;
+  errorMessage = '';
 
   constructor(private http: HttpClient) {}
 
-  addDoctor(): void {
-    if (!this.newDoctor.name || !this.newDoctor.specialization) {
-      alert('Name and Specialization are required.');
-      return;
-    }
-
-    this.http.post<Doctor>('http://localhost:3000/api/doctors', this.newDoctor)
-      .subscribe({
-        next: (response) => {
-          console.log('Doctor added successfully:', response);
-          this.submitted = true;
-          this.newDoctor = {
-            name: '',
-            img: '',
-            specialization: '',
-            experience: '',
-            location: '',
-            description: ''
-          };
-        },
-        error: (err) => {
-          console.error('Error adding doctor:', err);
-          alert('Failed to add doctor.');
-        }
-      });
+  addDoctor() {
+    this.http.post('/api/doctors', this.newDoctor).subscribe({
+      next: (response) => {
+        console.log('Doctor added successfully:', response);
+        this.submitted = true;
+        this.newDoctor = {
+          name: '',
+          img: '',
+          specialization: '',
+          experience: '',
+          location: '',
+          description: ''
+        };
+      },
+      error: (error) => {
+        console.error('Error adding doctor:', error);
+        this.errorMessage = 'Failed to add doctor. Please try again.';
+      }
+    });
   }
 }
