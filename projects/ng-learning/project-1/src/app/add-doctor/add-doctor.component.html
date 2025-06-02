@@ -1,7 +1,5 @@
-<div class="doctor-profile container mt-4">
-  <h2 class="text-center mb-4">Add New Doctor</h2>
-
-  <form (ngSubmit)="addDoctor()" #doctorForm="ngForm" *ngIf="!submitted">
+<div class="container mt-5">
+  <form (ngSubmit)="addDoctor()" #doctorForm="ngForm">
     <div class="form-group mb-3">
       <input type="text" class="form-control" placeholder="Name" required [(ngModel)]="newDoctor.name" name="name" />
     </div>
