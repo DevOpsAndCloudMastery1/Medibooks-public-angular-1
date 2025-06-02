@@ -42,7 +42,7 @@ export class AddDoctorComponent {
       return;
     }
 
-    this.http.post('htp://192.168.0.63:3000/api/doctors', this.newDoctor).subscribe({
+    this.http.post('http://192.168.0.63:3000/api/doctors', this.newDoctor).subscribe({
       next: (response) => {
         console.log('Doctor added successfully:', response);
         this.submitted = true;
