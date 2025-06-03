@@ -67,7 +67,7 @@ export class DoctorSearchComponent implements OnInit {
       doctor.specialization.toLowerCase().includes(filter)
     );
   }
-}
+
 
 deleteDoctor(id: string): void {
   const confirmDelete = confirm('Are you sure you want to delete this doctor?');
@@ -83,4 +83,6 @@ deleteDoctor(id: string): void {
         console.error('Failed to delete doctor:', err);
       }
     });
+}
+
 }
