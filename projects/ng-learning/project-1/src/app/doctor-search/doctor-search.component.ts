@@ -70,17 +70,17 @@ export class DoctorSearchComponent implements OnInit {
 }
 
 deleteDoctor(id: string): void {
-    const confirmDelete = confirm('Are you sure you want to delete this doctor?');
-    if (!confirmDelete) return;
+  const confirmDelete = confirm('Are you sure you want to delete this doctor?');
+  if (!confirmDelete) return;
 
-    this.http.delete(`http://192.168.0.63:3000/api/doctors/${id}`)
-      .subscribe({
-        next: () => {
-          this.doctors = this.doctors.filter(doctor => doctor.id !== id);
-          this.applyFilter(); // Refresh filtered list
-        },
-        error: (err) => {
-          console.error('Failed to delete doctor:', err);
-        }
-      });
-  }
+  this.http.delete(`http://192.168.0.63:3000/api/doctors/${id}`)
+    .subscribe({
+      next: () => {
+        this.doctors = this.doctors.filter((doctor: Doctor) => doctor.id !== id);
+        this.applyFilter(); // Refresh filtered list
+      },
+      error: (err: any) => {
+        console.error('Failed to delete doctor:', err);
+      }
+    });
+}
