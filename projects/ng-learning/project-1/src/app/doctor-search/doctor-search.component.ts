@@ -77,7 +77,7 @@ deleteDoctor(id: string): void {
     .subscribe({
       next: () => {
         this.doctors = this.doctors.filter((doctor: Doctor) => doctor.id !== id);
-        this.applyFilter(); // Refresh filtered list
+        this.filterDoctors(); // Refresh filtered list
       },
       error: (err: any) => {
         console.error('Failed to delete doctor:', err);
