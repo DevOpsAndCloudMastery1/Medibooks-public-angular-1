@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common'; // ✅ Import CommonModule
+import { NgIf, NgFor } from '@angular/common'; // Optional: if strict import
 
 @Component({
   standalone: true,
   selector: 'app-doctor-list',
   templateUrl: './doctor-list.component.html',
   styleUrl: './doctor-list.component.css',
-  imports: [],
+  imports: [
+    CommonModule // ✅ Fixes the *ngFor issue
+  ],
 })
 export class DoctorListComponent implements OnInit {
   doctors: any[] = [];
