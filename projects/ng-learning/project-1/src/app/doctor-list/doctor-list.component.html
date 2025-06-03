@@ -1,1 +1,22 @@
-<p>doctor-list works!</p>
+<div class="container mt-5">
+  <h3>Doctor List</h3>
+
+  <div *ngFor="let doctor of doctors" class="card p-3 mb-4 shadow-sm">
+    <div class="row">
+      <div class="col-md-2 text-center">
+        <img [src]="doctor.img" alt="{{ doctor.name }}" class="img-thumbnail" style="width: 100px; height: 100px;" />
+      </div>
+      <div class="col-md-8">
+        <h5>{{ doctor.name }}</h5>
+        <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+        <p><strong>Experience:</strong> {{ doctor.experience }}</p>
+        <p><strong>Location:</strong> {{ doctor.location }}</p>
+        <p><strong>Description:</strong> {{ doctor.description }}</p>
+      </div>
+      <div class="col-md-2 d-flex flex-column justify-content-center">
+        <button class="btn btn-warning mb-2" (click)="editDoctor(doctor.id)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteDoctor(doctor.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
