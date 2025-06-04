@@ -27,8 +27,14 @@ export class EditDoctorComponent implements OnInit {
     this.doctorId = this.route.snapshot.paramMap.get('id')!;
     this.http.get(`http://192.168.0.63:3000/api/doctors/${this.doctorId}`)
       .subscribe({
-        next: (data: any) => this.doctor = data.doctor,
-        error: () => this.errorMessage = 'Doctor not found.'
+        next: (data: any) => {
+        console.log('Doctor received:', data); // ✅ check in console
+        this.doctor = data.doctor;
+      },
+       error: (err) => {
+        console.error('Failed to load doctor', err);
+        this.errorMessage = 'Doctor not found.';
+       }
       });
   }
 
