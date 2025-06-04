@@ -1,5 +1,6 @@
 <div class="container mt-5" *ngIf="doctor">
   <form (ngSubmit)="updateDoctor()" #editDoctorForm="ngForm">
+    
     <div class="form-group mb-3">
       <input type="text" class="form-control" placeholder="Name" required [(ngModel)]="doctor.name" name="name" />
     </div>
@@ -24,9 +25,19 @@
       <textarea class="form-control" rows="3" placeholder="Description" [(ngModel)]="doctor.description" name="description"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-success">Update Doctor</button>
+    <button type="submit" class="btn btn-primary">Update Doctor</button>
 
     <div *ngIf="submitted" class="alert alert-success mt-3">Doctor updated successfully!</div>
     <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
   </form>
+</div>
+
+<!-- Optional fallback if doctor is null -->
+<div class="text-center mt-5" *ngIf="!doctor && !errorMessage">
+  <p class="text-muted">Loading doctor details...</p>
+</div>
+
+<!-- Error state -->
+<div class="text-center mt-5" *ngIf="errorMessage">
+  <p class="text-danger">{{ errorMessage }}</p>
 </div>
