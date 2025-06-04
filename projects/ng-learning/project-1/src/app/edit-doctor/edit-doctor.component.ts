@@ -28,11 +28,10 @@ export class EditDoctorComponent implements OnInit {
     this.http.get(`http://192.168.0.63:3000/api/doctors/${this.doctorId}`)
       .subscribe({
         next: (data: any) => {
-        console.log('Doctor received:', data); // ✅ check in console
-        this.doctor = data.doctor;
+        console.log('API response:', data); // ✅ check in console
+        this.doctor = data.doctor ?? data; // fallback to data if no .doctor key
       },
-       error: (err) => {
-        console.error('Failed to load doctor', err);
+       error: () => {
         this.errorMessage = 'Doctor not found.';
        }
       });
