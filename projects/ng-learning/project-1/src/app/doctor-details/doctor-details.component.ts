@@ -40,11 +40,11 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   fetchDoctorDetails(id: string): void {
-    this.http.get<Doctor>(`http://192.168.0.63:3000/api/doctors/${id}`)
+    this.http.get<any>(`http://192.168.0.63:3000/api/doctors/${id}`)
       .subscribe({
-        next: (doctor) => {
-          console.log('Doctor API raw response:', doctor);
-          this.doctor = doctor;
+        next: (data) => {
+          console.log('Doctor API raw response:', data);
+          this.doctor = data.doctor ?? data;
           console.log('Assigned to component:', this.doctor);
 },
         error: (err) => {
