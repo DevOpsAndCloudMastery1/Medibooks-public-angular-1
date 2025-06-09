@@ -37,18 +37,24 @@ export class EditDoctorComponent implements OnInit {
       });
   }
 
-  updateDoctor(): void {
-    this.http.put(`http://192.168.0.63:3000/api/doctors/${this.doctorId}`, this.doctor)
-      .subscribe({
-        next: () => {
-          this.submitted = true;
-          this.errorMessage = '';
-          setTimeout(() => this.router.navigate(['/doctor-list']), 2000);
-        },
-        error: () => {
-          this.errorMessage = 'Failed to update doctor. Please try again.';
-          this.submitted = false;
-        }
-      });
-  }
+updateDoctor(): void {
+  this.http.put(`http://192.168.0.63:3000/api/doctors/${this.doctorId}`, this.doctor)
+    .subscribe({
+      next: () => {
+        this.submitted = true;
+        this.errorMessage = '';
+        // ✅ Force component reload after navigation
+        setTimeout(() => {
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/doctor-list']);
+          });
+        }, 2000);
+      },
+      error: () => {
+        this.errorMessage = 'Failed to update doctor. Please try again.';
+        this.submitted = false;
+      }
+    });
+}
+
 }
