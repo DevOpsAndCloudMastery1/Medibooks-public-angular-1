@@ -43,9 +43,10 @@ export class DoctorDetailsComponent implements OnInit {
     this.http.get<Doctor>(`http://192.168.0.63:3000/api/doctors/${id}`)
       .subscribe({
         next: (doctor) => {
-          console.log('Fetched doctor from backend:', doctor);
+          console.log('Doctor API raw response:', doctor);
           this.doctor = doctor;
-        },
+          console.log('Assigned to component:', this.doctor);
+},
         error: (err) => {
           console.error('Error fetching doctor:', err);
           this.errorMessage = 'Doctor not found or error loading details.';
