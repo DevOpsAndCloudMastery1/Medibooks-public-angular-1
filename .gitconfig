@@ -7,3 +7,5 @@
 [user]
 	name = dhanya
 	email = dhanyadhilip191@gmail.com
+[http]
+	postBuffer = 524288000

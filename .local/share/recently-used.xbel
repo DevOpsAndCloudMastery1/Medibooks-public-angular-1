@@ -13,4 +13,88 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///home/ubuntuuser/Downloads/Medibooks-Logo-1.jpeg" added="2025-01-20T10:36:26.120136Z" modified="2025-01-20T10:36:26.369357Z" visited="2025-01-20T10:36:26.120137Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gnome" exec="&apos;xdg-desktop-portal-gnome %u&apos;" modified="2025-01-20T10:36:26.120138Z" count="1"/>
+          <bookmark:application name="snap.firefox" exec="&apos;gio open %u&apos;" modified="2025-01-20T10:36:26.369354Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/ubuntuuser/myproject/PC" added="2025-01-20T11:55:44.116338Z" modified="2025-01-20T11:55:44.116346Z" visited="2025-01-20T11:55:44.116338Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-zerosize"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;gnome-text-editor %U&apos;" modified="2025-01-20T11:55:44.116345Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/ubuntuuser/myproject/photo-1651008376811-b90baee60c1f.avif" added="2025-01-22T09:44:37.045715Z" modified="2025-01-22T09:44:37.295396Z" visited="2025-01-22T09:44:37.045716Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gnome" exec="&apos;xdg-desktop-portal-gnome %u&apos;" modified="2025-01-22T09:44:37.045717Z" count="1"/>
+          <bookmark:application name="snap.firefox" exec="&apos;gio open %u&apos;" modified="2025-01-22T09:44:37.295395Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/ubuntuuser/Downloads/online-marketing-hIgeoQjS_iE-unsplash.jpg" added="2025-01-22T09:45:22.923096Z" modified="2025-01-22T09:45:23.999058Z" visited="2025-01-22T09:45:22.923096Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;eog %U&apos;" modified="2025-01-22T09:45:22.923098Z" count="1"/>
+          <bookmark:application name="Image Viewer" exec="&apos;eog %u&apos;" modified="2025-01-22T09:45:23.999057Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/ubuntuuser/myproject/images/istockphoto-2050883733-1024x1024.webp" added="2025-01-22T09:46:11.815578Z" modified="2025-01-22T09:46:12.076389Z" visited="2025-01-22T09:46:11.815579Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gnome" exec="&apos;xdg-desktop-portal-gnome %u&apos;" modified="2025-01-22T09:46:11.815581Z" count="1"/>
+          <bookmark:application name="snap.firefox" exec="&apos;gio open %u&apos;" modified="2025-01-22T09:46:12.076387Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/ubuntuuser/myproject/images/Pasted%20image.png" added="2025-01-22T09:48:02.436111Z" modified="2025-01-22T09:48:02.840656Z" visited="2025-01-22T09:48:02.436112Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;eog %U&apos;" modified="2025-01-22T09:48:02.436113Z" count="1"/>
+          <bookmark:application name="Image Viewer" exec="&apos;eog %u&apos;" modified="2025-01-22T09:48:02.840655Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///" added="2025-03-07T20:42:41.677829Z" modified="2025-03-07T20:42:41.677832Z" visited="2025-03-07T20:42:41.677830Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:groups>
+          <bookmark:group>baobab</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="baobab" exec="&apos;baobab %u&apos;" modified="2025-03-07T20:42:41.677831Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
