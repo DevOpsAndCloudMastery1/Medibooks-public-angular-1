@@ -27,9 +27,10 @@ export class DoctorDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
-  ngOnInit(): void {
+ ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.doctorId = params.get('id');
+
       if (this.doctorId) {
         this.fetchDoctorDetails(this.doctorId);
       } else {
@@ -51,8 +52,4 @@ export class DoctorDetailsComponent implements OnInit {
         }
       });
   }
-}
-
-
-
 }
