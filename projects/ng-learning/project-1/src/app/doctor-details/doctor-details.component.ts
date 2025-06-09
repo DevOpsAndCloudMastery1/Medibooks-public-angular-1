@@ -22,26 +22,37 @@ interface Doctor {
 })
 export class DoctorDetailsComponent implements OnInit {
   doctorId: string | null = null;
-  doctor: Doctor | undefined;
+  doctor: Doctor | null = null;
+  errorMessage: string = '';
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.doctorId = params['id'];
-
+    this.route.paramMap.subscribe(params => {
+      this.doctorId = params.get('id');
       if (this.doctorId) {
-        // Call backend API to get a single doctor by id
-        this.http.get<Doctor>(`http://192.168.0.63:3000/api/doctors/${this.doctorId}`).subscribe({
-          next: doctor => {
-            this.doctor = doctor;
-            console.log('Fetched doctor from backend:', doctor);
-          },
-          error: err => {
-            console.error('Error fetching doctor:', err);
-          }
-        });
+        this.fetchDoctorDetails(this.doctorId);
+      } else {
+        this.errorMessage = 'Invalid doctor ID';
       }
     });
   }
+
+  fetchDoctorDetails(id: string): void {
+    this.http.get<Doctor>(`http://192.168.0.63:3000/api/doctors/${id}`)
+      .subscribe({
+        next: (doctor) => {
+          console.log('Fetched doctor from backend:', doctor);
+          this.doctor = doctor;
+        },
+        error: (err) => {
+          console.error('Error fetching doctor:', err);
+          this.errorMessage = 'Doctor not found or error loading details.';
+        }
+      });
+  }
+}
+
+
+
 }
